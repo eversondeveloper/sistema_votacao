@@ -1,0 +1,13 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  user-select: none;
+}
+
+body{
+  overflow: hidden;
+  width: 100%;
+  background-color: rgb(238, 238, 238);
+}

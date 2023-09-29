@@ -1,0 +1,674 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+body{
+    display: grid;    
+    grid-template-areas: "p p" "t m" "f f";
+    grid-template-rows: 135px 1fr 28px;
+    grid-template-columns: 3fr 34%;
+    overflow: hidden;
+    background-color: #D6D0C2;
+    background-image: url(../img/fundo.png);
+    background-size: cover;
+}
+
+/* Porcentagem e logotipo */
+
+.porcentagem{
+    grid-area: p;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.459)), url(../img/backimage.jpg);
+    background-position: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    font-weight: bold;
+    color: #ffffff;
+    height: 100%;
+}
+
+.porcentagemtopo{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.imgpol, .imglad{
+    transition: 1000ms;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.274);
+}
+
+.porcent1, .porcent2{
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 2vw;
+    display: flex;
+    align-items: center;
+}
+
+.porcent1 img, .porcent2 img{
+    width: 2vw;
+    margin: .2vw;
+}
+
+/* Contagem dos votos topo */
+
+.resultado{
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+}
+
+.resultado p{
+    font-size: 1.3vw;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.vbrancos2{
+    color: #000000;
+    background-color: rgb(255, 255, 255);
+    padding: 1vw;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.271), rgba(0, 0, 0, 0));
+    box-shadow: inset 3px 3px 3px #00000074;
+}
+
+.vnulos2{
+    color: #ffffff;
+    background-color: #2e2e2e;
+    padding: 1vw;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.638), rgba(0, 0, 0, 0));
+    box-shadow: inset 3px 3px 3px #00000074;
+}
+
+.candidatoumum{
+    color: #ffffff;
+    background-color: #00c44f;
+    padding: 1vw;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.803), rgba(0, 0, 0, 0));
+    box-shadow: inset 3px 3px 3px #00000074;
+}
+
+.candidatodoisdois{
+    color: #ffffff;
+    background-color: #ff4a4a;
+    padding: 1vw;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.638), rgba(0, 0, 0, 0));
+    box-shadow: inset 3px 3px 3px #00000074;
+}
+
+.totalvotos{
+    color: #ffffff;
+    background-color: rgb(121, 121, 121);
+    padding: 1vw;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.638), rgba(0, 0, 0, 0));
+    box-shadow: inset 3px 3px 3px #00000074;
+}
+
+.tela1{
+    display: flex;
+    width: 100%;
+    height: 28.5vw;
+    border-bottom: 2px solid #000;
+}
+
+.tela1esq{
+    width: 38vw;
+    padding-left: .5vw;
+}
+
+.frasetopo p{
+    font-size: 2vw;
+    text-transform: uppercase;
+    margin-top: .5vw;
+}
+
+/* Header */
+
+.header{
+    grid-area: t;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    flex-direction: column;    
+}
+
+
+
+.result{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.barra1{
+    background-color: #ffffff;
+    width: 100%;
+    box-shadow: inset 3px 3px 3px #00000074;
+    transition: 100ms;
+}
+
+.barra2{
+    display: flex;
+    width: 30px;
+    height: 23px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 1vw;
+    color: #060606;
+    padding-right: .5vw;
+    box-shadow: inset 3px 3px 3px #00000074;
+}
+
+.bonequinho img{
+    height: 1vw;
+    margin-right: .5vw;
+}
+
+.quantvotos{
+    display: flex;
+    width: 75%;
+    margin-bottom: 1.5vw;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btnsplay{
+    display: flex;
+    width: 75%;
+    align-items: center;
+
+}
+
+.dindin{
+    width: 160px;
+    background-color: #077c35;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 30px;
+    cursor: pointer;
+    color: #ffffff;
+    border-radius: 5px;
+    user-select: none;
+}
+
+.quantvotosbtn{
+    border: none;
+    width: 1vw;
+    height: 1vw;
+    margin-right: 2vw;
+    cursor: pointer;
+    font-size: 1.3vw;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quantvotosbtn img{
+    width: 1.5vw
+}
+
+.quantvotosbtn img:hover{
+    width: 2vw;
+}
+
+.pausevotos{
+    border: none;
+    width: 1vw;
+    height: 1vw;
+    margin-right: 2vw;
+    cursor: pointer;
+    font-size: 1.3vw;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pausevotos img{
+    width: 1.5vw;
+}
+
+.pausevotos img:hover{
+    width: 2vw;
+}
+
+.resetbtn{
+    border: none;
+    width: 1vw;
+    height: 1vw;
+    cursor: pointer;
+    font-size: 1.3vw;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2vw;
+}
+
+.resetbtn img{
+    width: 1.5vw;
+}
+
+.resetbtn img:hover{
+    width: 2vw;
+}
+
+.tela{
+    background-color: #ffffff;
+    height: 33vw;
+    width: 75%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: left;
+    flex-direction: column;
+    border-radius: 5px;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    background-image: linear-gradient(rgb(255, 255, 255), rgba(5, 152, 216, 0.346)), url(../img/tela.png);
+    box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.315);
+}
+
+/* Ativação e desativação de todas as telas */
+
+.ativo{
+    color: #ffffff00;
+    border: none;
+}
+
+/* Tela da esquerda dentro da tela */
+
+.tela1esq p{
+    font-size: 1.3vw;
+    margin-bottom: 3.5vw;
+}
+
+.cargo{
+    margin-top: 4vw;
+    margin-left: 14vw;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    margin-bottom: 1vw;
+}
+
+.cargo h1{
+    font-weight: normal;
+    font-size: 2vw;
+    color: #000;
+}
+
+.inputs{
+    display: flex;
+    font-size: 1.3vw;
+    margin-bottom: 1vw;
+}
+
+.inputs div{
+    display: flex;
+    align-items: center;
+}
+
+.numerocandidato{
+    margin-left: 6vw;
+    font-size: 1.3vw;
+}
+
+.numeropalavra p{
+    margin: 0;
+}
+
+.numero1, .numero2{
+    width: 2.5vw;
+    height: 3.5vw;
+    border: 1px solid #000;
+    margin-left: .5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5vw;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    color: #000;
+}
+
+.votoembranco2{
+    color: #000;
+    display: flex;
+    justify-content: center;
+    padding-left: 10vw;
+    padding-top: 6vw;
+    margin-bottom: 1.3vw;
+}
+
+.votoembranco2 p{
+    font-size: 3vw;
+    text-transform: uppercase;
+}
+
+.votoembranco3{
+    color: #000;
+    display: flex;
+    justify-content: center;
+    padding-left: 10vw;
+    padding-top: 6vw;
+    margin-bottom: 1.3vw;
+}
+
+.votoembranco3 p{
+    font-size: 3vw;
+    text-transform: uppercase;
+}
+
+/* Tela da direita dentro da tela */
+
+.teladir{
+    font-size: 1.3vw;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.fotopresidente{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fotovicepresidente{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fotops img{
+    width: 10vw;
+    margin-top: 1vw;
+}
+
+.fotoviceps img{
+    width: 8vw;
+}
+
+/* Tela do rodape dentro da tela */
+
+.telarodape{
+    width: 100%;
+    height: 100%;
+    padding-left: .5vw;
+    font-size: 1.3vw;
+}
+
+.adesivo{
+    background-color: #cfc79d;
+    padding: 5px;
+    margin-top: 10px;
+    border-radius: 5px;
+    background-image: url(../img/fundobtnnome.jpg);    
+    background-size: cover;
+    box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.315);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 15vw;
+}
+
+.adesivo h1{
+    font-size: 2vw;
+    color: #154662;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.adesivo input{
+    width: 50px;
+}
+
+.botoescontainer{
+    grid-area: m;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.nome{
+    font-family: Helvetica, sans-serif;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+    background-color: #cfc697;
+    width: 90%;
+    height: 9vw;
+    border-radius: 5px;
+    align-items: center;
+    padding: 15px;
+    background-image: url(../img/fundobtnnome.jpg);
+    background-size: cover;
+    box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.315);
+}
+
+.logo img{
+
+    width: 7vw;
+    align-self: center;
+    margin-left: 20px;
+    transition: 300ms;
+    animation: caveira 8s infinite alternate;
+    
+}
+
+@keyframes caveira {
+    from{
+
+    }
+
+    to{
+        width: 10vw;
+    }
+}
+
+.nomedaurna{    
+    font-size: 2.5vw;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.nomedaurna{
+    text-align: center;
+}
+
+.botoes{
+    background-color: #2e2b22;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.73)), url(../img/fundobtn.jpg);
+    background-size: cover;
+    height: 32vw;
+    width: 90%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.568);
+}
+
+.btn1{
+    padding-top: 5%;
+    display: flex;
+    justify-content: space-around;
+    width: 70%;
+    height: 75%;
+    flex-wrap: wrap;
+}
+
+.btn1 input{
+    margin: 5px;
+    background-color: rgb(0, 0, 0);
+    cursor: pointer;
+    color: #8ad1f4;
+    width: 28%;
+    border-radius: 5px;
+    display: flex;
+    font-size: 2vw;
+    padding-left: 7px;
+    border: none;
+    box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.753);
+    font-weight: bold;
+}
+
+.btn1 input:hover{
+    background-color: #d1d1d1;
+    color: #a0a0a0;
+    box-shadow: none;
+    font-weight: normal;
+}
+
+.bton1{
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.73)), url(../img/btn/btn1.png);
+    background-size: cover;
+}
+
+.bton2{
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.73)), url(../img/btn/btn2.png);
+    background-size: cover;
+}
+
+.bton3{
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.73)), url(../img/btn/btn3.png);
+    background-size: cover;
+}
+
+.bton4{
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.73)), url(../img/btn/btn4.png);
+    background-size: cover;
+}
+
+.bton5{
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.73)), url(../img/btn/btn5.png);
+    background-size: cover;
+}
+
+.bton6{
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.73)), url(../img/btn/btn6.png);
+    background-size: cover;
+}
+
+.bton7{
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.73)), url(../img/btn/btn7.png);
+    background-size: cover;
+}
+
+.bton8{
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.73)), url(../img/btn/btn8.png);
+    background-size: cover;
+}
+
+.bton9{
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.73)), url(../img/btn/btn9.png);
+    background-size: cover;
+}
+
+.bton0{
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.73)), url(../img/btn/btn0.png);
+    background-size: cover;
+}
+
+.btn2{
+    height: 35%;
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 10%;
+    
+}
+
+.btn2 input{
+    width: 30%;    
+    border-radius: 5px;
+    font-size: 1.4vw;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn2 input:hover{
+    font-weight: normal;
+}
+
+.branco{
+    background-color: #8ad1f4;
+    padding-bottom: 10%;
+    height: 60%;
+    border: none;
+    box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.753);
+    background-image: url(../img/btn/btnbranco.png);
+    background-size: cover;
+    background-position: center;
+    font-family: 'Oswald', sans-serif;
+}
+
+.branco:hover{
+    box-shadow: none;
+    height: 59%;
+}
+
+.corrige{
+    background-color: #c14018;
+    padding-bottom: 10%;
+    height: 60%;
+    border: none;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.753);
+    background-image: linear-gradient(#ff5d2c, #c13f1800), url(../img/btn/btncorrige.png);
+    background-size: cover;
+    background-position: center;
+    font-family: 'Oswald', sans-serif;
+}
+
+.corrige:hover{
+    box-shadow: none;
+    height: 59%;
+}
+
+.confirma{
+    background-color: #077c35;
+    padding-bottom: 14%;
+    height: 75%;
+    border: none;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.753);
+    background-image: linear-gradient(#0cc55695, #077c3600), url(../img/btn/btnverde.png);
+    background-size: cover;
+    background-position: center;
+    font-family: 'Oswald', sans-serif;
+}
+
+.confirma:hover{
+    box-shadow: none;
+    height: 74%;
+}
+
+.footer{
+    grid-area: f;
+    display: flex;
+    justify-content: space-around;
+}
+
+.ventilacao{
+    margin-top: 1%;
+    width: 1.5%;
+    height: 100%;
+    background-color: #4b4b4b;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.922), rgba(255, 255, 255, 0));
+}

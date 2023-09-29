@@ -1,0 +1,16 @@
+.rodape{
+    background-image: url('../assets/img/fundo.png');
+    position: absolute;
+    top: 97vh;
+    width: 100vw;
+    height: 20vh;
+    display: flex;
+    justify-content: space-around;
+}
+
+.ventilacao{
+    background-image: linear-gradient(rgb(0, 0, 0), rgba(0, 0, 0, 0));
+    width: 20px;
+    height: 100px;
+    background-color: rgb(56, 56, 56);
+}
