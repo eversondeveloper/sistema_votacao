@@ -28,6 +28,8 @@ function SuperComputador(props){
 
     let imagemFinal = () => {
 
+
+
         let imagemF = ""
 
         if(porcentGeralSP == 100 && porcentCand1SP > 50){
@@ -46,7 +48,6 @@ function SuperComputador(props){
         let corruptionMoneySom = new Audio(corruptionMoney)
         corruptionMoneySom.volume = 1
         corruptionMoneySom.play()
-
     }
 
     useEffect(()=>{
@@ -145,6 +146,24 @@ function SuperComputador(props){
         }
 
     },[porcentCand2SP,])
+
+    useEffect(()=>{
+
+        document.addEventListener("mousedown", (event)=>{
+        
+            if(event.button == 1){
+
+                setCorruption(true)
+
+            }else{
+                
+                setCorruption(false)
+                
+            }
+    
+        })
+
+    },[corruption])
 
 
     return <div className={styles.porcentagem}>
