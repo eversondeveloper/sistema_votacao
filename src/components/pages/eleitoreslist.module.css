@@ -1,0 +1,63 @@
+.eleitoresList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 100vh;
+  background: url(/fundogeral.png);
+  width: 100vw;
+  overflow: auto;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+  font-family: 'Arial', sans-serif;
+}
+
+.error {
+  color: #d9534f;
+  font-family: 'Arial', sans-serif;
+  margin-bottom: 20px;
+}
+
+.filterContainer {
+  margin-bottom: 20px;
+  width: 90%;
+}
+
+.filterInput {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.table {
+  width: 90%;
+  border-collapse: collapse;
+  background-color: #fff;
+}
+
+.tableHeader {
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
+  text-align: left;
+  font-family: 'Arial', sans-serif;
+}
+
+.tableRow:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.tableCell {
+  padding: 10px;
+  border: 1px solid #ddd;
+  font-family: 'Arial', sans-serif;
+}
