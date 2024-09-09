@@ -14,7 +14,6 @@ import Apuracao from "./components/Apuracao";
 import ApuraEleitores from "./components/ApuraEleitores";
 
 function App() {
-  // Configurações gerais
   const [tempoAtualiz, setTempoAtualize] = useState(10);
   const [tipoEleicao, setTipoEleicao] = useState(
     "Líder da Liga da Justiça / 2024"
@@ -25,7 +24,6 @@ function App() {
   const [numCand1, setNumCand1] = useState(44);
   const [numCand2, setNumCand2] = useState(11);
 
-  // Código
   const [num1Digit, setNum1Digit] = useState("");
   const [num2Digit, setNum2Digit] = useState("");
   const [btnBranco, setBtnBranco] = useState(false);
@@ -49,21 +47,20 @@ function App() {
   const [paginas, setPaginas] = useState(false);
 
   const [cpfAtual, setCpfAtual] = useState("");
-  const [imageVenc, setImageVenc] = useState("/cand1.jpg");
+  const [imageVenc, setImageVenc] = useState("./cand1.jpg");
   const [vencedor, setVencedor] = useState(false);
 
   const somCompRuidoRef = useRef(null);
 
-  const somHeroicoRef = useRef(new Audio(`/somheroico4.mp3`));
+  const somHeroicoRef = useRef(new Audio(`./somheroico4.mp3`));
   somHeroicoRef.current.volume = 0.3;
   somHeroicoRef.current.loop = true;
-  
 
-  const somCand1 = useRef(new Audio(`/supermanmusic.mp3`));
+  const somCand1 = useRef(new Audio(`./supermanmusic.mp3`));
   somCand1.current.volume = 1;
   somCand1.current.loop = true;
 
-  const somCand2 = useRef(new Audio(`/batmanmusic.mp3`));
+  const somCand2 = useRef(new Audio(`./batmanmusic.mp3`));
   somCand2.current.volume = 1;
   somCand2.current.loop = true;
 
@@ -110,25 +107,11 @@ function App() {
 
   useEffect(() => {
     if (v1 > v2) {
-      setImageVenc("/cand1.jpg");
+      setImageVenc("./cand1.jpg");
     } else if (v1 < v2) {
-      setImageVenc("/cand2.jpg");
+      setImageVenc("./cand2.jpg");
     }
   }, [v1, v2]);
-
-  useEffect(() => {
-    const handleMouseDown = (e) => {
-      if (e.button === 1) {
-        setSuperPC((prevSuperPC) => !prevSuperPC);
-      }
-    };
-
-    document.addEventListener("mousedown", handleMouseDown);
-
-    return () => {
-      document.removeEventListener("mousedown", handleMouseDown);
-    };
-  }, []);
 
   const fecharAnimacao = () => {
     setVencedor(false);

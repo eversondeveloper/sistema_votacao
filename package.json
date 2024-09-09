@@ -1,82 +1,56 @@
 {
-  
   "name": "urnareact2",
-  
-  "private": true,
-  
   "version": "0.0.0",
-  
-  "type": "module",
-  
+  "description": "Urna eletrônica React com Electron",
+  "author": "Seu Nome",
+  "private": true,
+  "main": "urna.js",
+  "homepage": "https://eversonsilvadeveloper.github.io/sistema_votacao",
   "scripts": {
-  
-    
-  "dev": "vite",
-  
-    
-  "build": "vite build",
-  
-    
-  "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-  
-    
-  "preview": "vite preview",
-  
-    
-  "predeploy": "npm run build",
-  
-    
-  "deploy": "gh-pages -d dist"
-  
+    "dev": "vite",
+    "build": "vite build",
+    "electron": "electron .",
+    "electron-dev": "concurrently \"vite\" \"npm run electron\"",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
-  
+  "build": {
+    "appId": "com.seuprojeto.urna",
+    "productName": "Urna Eletrônica",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "dist/**/*",
+      "urna.js",
+      "api/**/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "src/assets/icon/icon.ico",
+      "requestedExecutionLevel": "requireAdministrator",
+      "sign": false
+    },
+    "asarUnpack": [
+      "api/**/*"
+    ]
+  },
   "dependencies": {
-  
-    
-  "axios": "^1.7.5",
-  
-    
-  "react": "^18.2.0",
-  
-    
-  "react-dom": "^18.2.0",
-  
-    
-  "react-router-dom": "^6.25.1",
-  
-    
-  "urnareact2": "file:"
-  
+    "axios": "^1.7.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.25.1",
+    "urnareact2": "file:"
   },
-  
   "devDependencies": {
-  
-    
-  "@types/react": "^18.2.15",
-  
-    
-  "@types/react-dom": "^18.2.7",
-  
-    
-  "@vitejs/plugin-react-swc": "^3.3.2",
-  
-    
-  "eslint": "^8.45.0",
-  
-    
-  "eslint-plugin-react": "^7.32.2",
-  
-    
-  "eslint-plugin-react-hooks": "^4.6.0",
-  
-    
-  "eslint-plugin-react-refresh": "^0.4.3",
-  
-    
-  "gh-pages": "^6.1.1",
-  
-    
-  "vite": "^4.4.5"
-  
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react-swc": "^3.3.2",
+    "concurrently": "^7.6.0",
+    "electron": "^25.3.1",
+    "electron-builder": "^23.0.0",
+    "eslint": "^8.45.0",
+    "eslint-plugin-react": "^7.32.2",
+    "vite": "^4.4.5"
   }
 }

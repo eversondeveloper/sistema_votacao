@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import styles from "./AnimVencedor.module.css";
 
 const AnimVencedor = (props) => {
-  const musicVencRef = useRef(new Audio("/vencedor.mp3"));
+  const musicVencRef = useRef(new Audio("./vencedor.mp3"));
   musicVencRef.current.volume = 1;
   musicVencRef.current.loop = true;
 

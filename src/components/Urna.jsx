@@ -61,10 +61,21 @@ function Urna(props) {
       } else if (e.key === "Enter") {
         btnConfirma();
       } else if (e.key === "Backspace") {
-        if (props.num2Digit !== "") {
+        if (props.num2Digit !== "" || props.num1Digit !== "") {
           props.setNum2Digit("");
-        } else if (props.num1Digit !== "") {
           props.setNum1Digit("");
+        }
+
+        if (props.btnBranco === true) {
+          props.setBtnBranco(false);
+        }
+      } else if (e.key === "-" || e.key === "+") {
+        if (
+          props.num2Digit == "" &&
+          props.num1Digit == "" &&
+          props.btnBranco !== true
+        ) {
+          votosBrancos();
         }
       }
     };
@@ -103,7 +114,6 @@ function Urna(props) {
     candidatoNumero === Number(props.numCand2)
       ? setEstiloBorda("2px solid #000000")
       : setEstiloBorda("");
-
     props.btnBranco === true || props.num2Digit !== ""
       ? setInfos2("#000000")
       : setInfos2("");
@@ -141,15 +151,15 @@ function Urna(props) {
       props.nomeCand1.charAt().toUpperCase() + props.nomeCand1.slice(1);
     partidoCand = "PV - Partido da Vigilância";
     nomeViceCand = "Aquaman";
-    imageCand = "/cand1.jpg";
-    imageCandVice = "/vicecand1.jpg";
+    imageCand = "./cand1.jpg";
+    imageCandVice = "./vicecand1.jpg";
   } else if (candidatoNumero === props.numCand2) {
     nomeCand =
       props.nomeCand2.charAt().toUpperCase() + props.nomeCand2.slice(1);
     partidoCand = "PE - Partido da Esperança";
     nomeViceCand = "Mulher Maravilha";
-    imageCand = "/cand2.jpg";
-    imageCandVice = "/vicecand2.jpg";
+    imageCand = "./cand2.jpg";
+    imageCandVice = "./vicecand2.jpg";
   }
 
   const telaInicial = () => {
@@ -295,8 +305,11 @@ function Urna(props) {
       props.btnBranco === false
     ) {
       alert("Você ainda não digitou nenhum número.");
+      props.somHeroicoRef.current.currentTime = 0;
+      props.somHeroicoRef.current.pause();
     } else if (props.btnBranco === true) {
       enviarVoto(0, cpf);
+      sonsConfirme()
       props.somHeroicoRef.current.currentTime = 0;
       props.somHeroicoRef.current.pause();
     } else if (
@@ -326,7 +339,6 @@ function Urna(props) {
     }
 
     props.btnBranco === true ? props.setBtnBranco(false) : "";
-
     props.setNum1Digit("");
     props.setNum2Digit("");
     props.setValidacao(true);

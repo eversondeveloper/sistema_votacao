@@ -84,19 +84,21 @@ export default function Validacao(props) {
 
   return (
     <div className={styles.validgeral}>
-      <button
-        className={styles.botaoganhador}
-        onClick={() => {
-          props.setVencedor(true);
-        }}
-      >
-        Ganhador
-      </button>
+      <div className={styles.botaoganhador1}>
+        <button
+          className={styles.botaoganhador2}
+          onClick={() => {
+            props.setVencedor(true);
+          }}
+        >
+          Ganhador
+        </button>
+      </div>
       <div
         className={styles.btnproposta}
         onClick={() => {
           props.setSuperPC(true);
-          props.setCandProp(11);
+          props.setCandProp(44);
         }}
       ></div>
       <div className={styles.telabtns}>
@@ -207,7 +209,7 @@ export default function Validacao(props) {
         className={styles.btnproposta}
         onClick={() => {
           props.setSuperPC(true);
-          props.setCandProp(44);
+          props.setCandProp(11);
         }}
       ></div>
     </div>

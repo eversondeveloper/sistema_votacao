@@ -19,8 +19,8 @@ function SuperComputador(props) {
             >
               <div>
                 <img
-                  src={"/cand1.jpg"}
-                  alt="Candidato Pedro"
+                  src={"./cand1.jpg"}
+                  alt="Batman"
                   className={styles.imgpol}
                 />
                 <p>
@@ -120,8 +120,8 @@ function SuperComputador(props) {
             >
               <div>
                 <img
-                  src={"/cand2.jpg"}
-                  alt="Candidato Luciano"
+                  src={"./cand2.jpg"}
+                  alt="Superman"
                   className={styles.imglad}
                 />
                 <p>
