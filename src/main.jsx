@@ -3,7 +3,7 @@ import App from './App.jsx'
 import { BrowserRouter} from 'react-router-dom'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <BrowserRouter>
+  <BrowserRouter basename="/sistema_de_votacao">
     <App />
   </BrowserRouter>,
 )
