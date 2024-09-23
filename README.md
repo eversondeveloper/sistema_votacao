@@ -322,7 +322,7 @@ Apesar do sistema funcionar muito bem em um só hardware e não precisar do Diag
 
 ```sql
 --Criação do Banco de Dados
-CREATE DATABASE sistema_votacao3;
+CREATE DATABASE sistema_votacao;
 
 -- Criação da tabela de administrador
 CREATE TABLE administrador (
