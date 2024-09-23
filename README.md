@@ -228,7 +228,7 @@ O **Sistema de Votação Eletrônica** criado visa promover a conscientização 
    - Realiza a votação.
    - Vê os resultados da votação.
 
-### Casos de Uso
+## Casos de Uso
 
 1. **Cadastrar Eleições (Administrador)**:
    - O administrador insere os detalhes das eleições no sistema, como cargos, candidatos e ano.
@@ -259,7 +259,7 @@ O **Sistema de Votação Eletrônica** criado visa promover a conscientização 
 - O Eleitor interage com o sistema principalmente para se cadastrar, votar e ver os resultados.
 - Assistência do administrador é necessária para registrar o eleitor, ver as propostas, e validar o eleitor antes de votar.
 
-#IMAGEM1
+![Casos de Uso](imgsredme/image1.png)
 
 # Diagrama de Sequência
 
@@ -290,31 +290,33 @@ O **Sistema de Votação Eletrônica** criado visa promover a conscientização 
 - O **Sistema de Votação** retorna os números e estatísticas.
 - O vencedor é confirmado e anunciado.
 
-#Diagrama de Atividades
-##Diagrama de Atividades do Administrador
+![Diagrama de Sequência](imgsredme/image2.png)
 
-#IMAGEM2
+# Diagrama de Atividades
+## Diagrama de Atividades do Administrador
 
-#Diagrama de Atividades do Eleitor
+![Diagrama de Atividades do Administrador](imgsredme/image3.png)
 
-##IMAGEM3
+# Diagrama de Atividades do Eleitor
 
-#Diagrama de Componentes
+![Diagrama de Atividades do Eleitor](imgsredme/image3.png)
 
-#IMAGEM4
+## Diagrama de Componentes
 
-#Diagrama de Implantação
+![Diagrama de Componentes](imgsredme/image5.png)
+
+# Diagrama de Implantação
 Apesar do sistema funcionar muito bem em um só hardware e não precisar do Diagrama de Implantação. Modelei um sistema que seria mais viável para funcionamento do processo, com todos setores separados. O setor de cadastros, o setor de validação e registros dos votos, o setor de apuração dos votos e o setor de armazenamento dos dados.
 
-#IMAGEM5
+![Diagrama de Implantação](imgsredme/image6.png)
 
-#Diagrama de Estados
+# Diagrama de Estados
 
-#IMAGEM6
+![Diagrama de Estados](imgsredme/image7.png)
 
-#Modelo Conceitual de Dados
+# Modelo Conceitual de Dados
 
-#IMAGEM7
+![Modelo Conceitual de Dados](imgsredme/image8.png)
 
 # Modelo Físico
 
@@ -359,9 +361,10 @@ CREATE TABLE votos (
     FOREIGN KEY (id_eleicao) REFERENCES dados_eleicao(id) ON DELETE CASCADE
 );
 ```
-#Modelo Lógico
+# Modelo Lógico
 
-#IMAGEM8
+![Modelo Lógico](imgsredme/image9.png)
+
 # Todos os modelos e diagramas gráficos foram criados com o auxílio de:
 
 - Visual Paradigm Online
