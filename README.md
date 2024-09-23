@@ -259,7 +259,7 @@ O **Sistema de Votação Eletrônica** criado visa promover a conscientização 
 - O Eleitor interage com o sistema principalmente para se cadastrar, votar e ver os resultados.
 - Assistência do administrador é necessária para registrar o eleitor, ver as propostas, e validar o eleitor antes de votar.
 
-![Casos de Uso](imgsredme/image1.png)
+![Casos de Uso](imgsredme/image1.jpg)
 
 # Diagrama de Sequência
 
@@ -290,33 +290,33 @@ O **Sistema de Votação Eletrônica** criado visa promover a conscientização 
 - O **Sistema de Votação** retorna os números e estatísticas.
 - O vencedor é confirmado e anunciado.
 
-![Diagrama de Sequência](imgsredme/image2.png)
+![Diagrama de Sequência](imgsredme/image2.jpg)
 
 # Diagrama de Atividades
 ## Diagrama de Atividades do Administrador
 
-![Diagrama de Atividades do Administrador](imgsredme/image3.png)
+![Diagrama de Atividades do Administrador](imgsredme/image3.jpg)
 
 # Diagrama de Atividades do Eleitor
 
-![Diagrama de Atividades do Eleitor](imgsredme/image3.png)
+![Diagrama de Atividades do Eleitor](imgsredme/image3.jpg)
 
 ## Diagrama de Componentes
 
-![Diagrama de Componentes](imgsredme/image5.png)
+![Diagrama de Componentes](imgsredme/image5.jpg)
 
 # Diagrama de Implantação
 Apesar do sistema funcionar muito bem em um só hardware e não precisar do Diagrama de Implantação. Modelei um sistema que seria mais viável para funcionamento do processo, com todos setores separados. O setor de cadastros, o setor de validação e registros dos votos, o setor de apuração dos votos e o setor de armazenamento dos dados.
 
-![Diagrama de Implantação](imgsredme/image6.png)
+![Diagrama de Implantação](imgsredme/image6.jpg)
 
 # Diagrama de Estados
 
-![Diagrama de Estados](imgsredme/image7.png)
+![Diagrama de Estados](imgsredme/image7.jpg)
 
 # Modelo Conceitual de Dados
 
-![Modelo Conceitual de Dados](imgsredme/image8.png)
+![Modelo Conceitual de Dados](imgsredme/image8.jpg)
 
 # Modelo Físico
 
@@ -363,7 +363,7 @@ CREATE TABLE votos (
 ```
 # Modelo Lógico
 
-![Modelo Lógico](imgsredme/image9.png)
+![Modelo Lógico](imgsredme/image9.jpg)
 
 # Todos os modelos e diagramas gráficos foram criados com o auxílio de:
 
