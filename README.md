@@ -7,9 +7,6 @@ Siga todos os passos com atenção.
 - Este projeto deve ser instalado em um computador.
 - O usuário deve ter conhecimentos básicos de informática, incluindo manipulação com terminal.
 
-Se você acessou pelo Youtube, clique no link na descrição, para acompanhar com outros links que estão no GitHub.
-Se já está no GitHub, vamos lá!
-
 Como é um projeto de sistema de votação, foi criado para rodar localmente, mas com possibilidade de comunicação com banco de dados em nuvem.  
 Quando terminar a instalação, a API já está configurada com um banco de dados Postgres em um servidor de Banco de Dados na nuvem chamado **Tembo** e já estará funcional.
 
@@ -26,7 +23,7 @@ Se quiser testar o projeto com um banco de dados local, precisa ter o **Postgres
 
 ## Passos de instalação:
 Baixe os arquivos que estão compactados em ZIP no link:  
-[BAIXAR ARQUIVOS](https://drive.google.com/file/d/1qrJHNGfc6bMdSYmxBwuA69dqjiSeTf-B/view?usp=drive_link)  
+[BAIXAR ARQUIVOS](https://drive.google.com/file/d/1-dfmAGQPiYgexEdn8dHCatYosxgFIYPI/view?usp=drive_link)  
 Após baixar, descompacte e primeiro rode a API.
 
 ### Para rodar a API:
@@ -43,15 +40,15 @@ npm run start
 ```
 6. Com isso o sistema começa a rodar na porta 4000. Certifique-se de ter esta porta livre.
 
-#Vamos para as instruções de utilização do sistema.
+# Vamos para as instruções de utilização do sistema.
 Como é um sistema de votação, a página principal, que é a urna, não tem os links para as subpáginas. Então devemos colocar diretamente na barra de endereços e salvar em ordem como favoritos.
 Aqui estão os links e a ordem do processo:
-http://localhost:4000/cadastroadm - página de cadastro do administrador.
-http://localhost:4000/cadastroeleicao - página de cadastro da eleição.
-http://localhost:4000/cadastroeleitor - página de cadastro do eleitor.
-http://localhost:4000/listaeleitores - lista de eleitores cadastrados.
-http://localhost:4000/ - página principal do sistema. Máquina de validação e urna.
-http://localhost:4000/superpc - Supercomputador que faz a apuração dos votos.
+- http://localhost:4000/cadastroadm - página de cadastro do administrador.
+- http://localhost:4000/cadastroeleicao - página de cadastro da eleição.
+- http://localhost:4000/cadastroeleitor - página de cadastro do eleitor.
+- http://localhost:4000/listaeleitores - lista de eleitores cadastrados.
+- http://localhost:4000/ - página principal do sistema. Máquina de validação e urna.
+- http://localhost:4000/superpc - Supercomputador que faz a apuração dos votos.
 
 1. Primeiro precisa de um administrador cadastrado para ter acesso às outras partes do sistema. Cada sistema só pode ter um administrador cadastrado. 
 2. O administrador deve cadastrar uma eleição. Sem uma eleição cadastrada, ele até pode cadastrar eleitores, mas os eleitores não conseguem votar. São barrados na validação.
@@ -59,7 +56,7 @@ http://localhost:4000/superpc - Supercomputador que faz a apuração dos votos.
 4. No momento da votação, primeiro o administrador valida o eleitor com a máquina de validação. Se o eleitor for validado, ele assume a urna e registra seu voto.
 5. Após o registro dos votos, o administrador apura os votos no supercomputador e utiliza o componente “Ganador”, que fica na máquina de validação para mostrar o ganhador.
 
-##Assim está completo o processo!
+## Assim está completo o processo!
 
 
 
