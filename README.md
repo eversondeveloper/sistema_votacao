@@ -1,5 +1,8 @@
 ### Atenção! Os detalhes técnicos deste projeto, estão abaixo destas instruções.
 
+[![Miniatura do vídeo](https://i9.ytimg.com/vi_webp/92jPVoBsUnM/mqdefault.webp?v=66f1bfb7&sqp=CLiDx7cG&rs=AOn4CLDX1cJu2h1edpB5ef7KEKkQMpnStg)](https://www.youtube.com/watch?v=92jPVoBsUnM)
+
+
 # Como colocar o projeto para rodar? 
 Siga todos os passos com atenção.
 
