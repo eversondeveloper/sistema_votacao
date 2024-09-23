@@ -44,7 +44,7 @@
   background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
   overflow: hidden;
   position: relative;
-  background-image: url('/fundogeral2.jpg');
+  background-image: url("/fundogeral2.jpg");
   background-size: cover;
 }
 
@@ -119,7 +119,7 @@
   object-fit: cover;
   border-radius: 50%;
   opacity: 0;
-  animation: fadeIn 10s forwards;
+  animation: fadeIn 30s forwards;
 }
 
 .closeButton {

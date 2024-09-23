@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import styles from "./propostas.module.css";
 
-function SuperComputador(props) {
+function Propostas(props) {
   return (
     <div className={styles.supercomputadorgeral}>
       <div
@@ -242,4 +242,4 @@ function SuperComputador(props) {
   );
 }
 
-export default SuperComputador;
+export default Propostas;

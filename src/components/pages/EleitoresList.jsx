@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import styles from "./eleitoreslist.module.css";
 
@@ -8,6 +8,9 @@ const EleitoresList = (props) => {
   const [eleitores, setEleitores] = useState([]);
   const [filtro, setFiltro] = useState("");
   const [erro, setErro] = useState("");
+  const [dadosEleicao, setDadosEleicao] = useState(null); 
+  const [coresTexto, setCoresTexto] = useState([]); 
+  const refs = useRef([]); 
 
   useEffect(() => {
     document.title = "Lista de Eleitores";
@@ -16,14 +19,32 @@ const EleitoresList = (props) => {
   }, []);
 
   useEffect(() => {
+    
+    const fetchEleicao = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/eleicao");
+        const eleicao = response.data[0]; 
+        setDadosEleicao(eleicao);
+      } catch (err) {
+        console.error("Erro ao buscar dados da eleição:", err);
+      }
+    };
+
     const fetchEleitores = async () => {
       try {
-        const responseEleitores = await axios.get("http://localhost:3000/eleitores");
+        const responseEleitores = await axios.get(
+          "http://localhost:3000/eleitores"
+        );
         const eleitoresData = responseEleitores.data;
+
+        
+        eleitoresData.sort((a, b) => a.nome.localeCompare(b.nome));
 
         const eleitoresComStatus = await Promise.all(
           eleitoresData.map(async (eleitor) => {
-            const responseVoto = await axios.get(`http://localhost:3000/votos/cpf/${eleitor.cpf}`);
+            const responseVoto = await axios.get(
+              `http://localhost:3000/votos/cpf/${eleitor.cpf}`
+            );
             return {
               ...eleitor,
               votou: responseVoto.data.votou,
@@ -32,13 +53,20 @@ const EleitoresList = (props) => {
         );
 
         setEleitores(eleitoresComStatus);
+
+        
+        const novasCores = eleitoresComStatus.map((eleitor) =>
+          eleitor.votou ? "blue" : "red"
+        );
+        setCoresTexto(novasCores);
       } catch (err) {
         setErro("Erro ao buscar eleitores.");
         console.error("Erro ao buscar eleitores:", err);
       }
     };
 
-    fetchEleitores();
+    fetchEleicao(); 
+    fetchEleitores(); 
   }, []);
 
   const handleFiltroChange = (e) => {
@@ -69,6 +97,22 @@ const EleitoresList = (props) => {
 
   return (
     <div className={styles.eleitoresList}>
+      <div className={styles.eleicaoInfo}>
+        {dadosEleicao ? (
+          <>
+            <h2 className={styles.cargoEleicao}>Cargo: {dadosEleicao.cargo}</h2>
+            <h3 className={styles.anoEleicao}>Ano: {dadosEleicao.ano}</h3>
+            <h4 className={styles.candidato1}>
+              Candidato 1: {dadosEleicao.nomecand1}
+            </h4>
+            <h4 className={styles.candidato2}>
+              Candidato 2: {dadosEleicao.nomecand2}
+            </h4>
+          </>
+        ) : (
+          <p className={styles.semEleicao}>Não há eleições cadastradas</p>
+        )}
+      </div>
       <h1 className={styles.title}>Lista de Eleitores</h1>
       {erro && <p className={styles.error}>{erro}</p>}
       <div className={styles.filterContainer}>
@@ -83,19 +127,25 @@ const EleitoresList = (props) => {
       <table className={styles.table}>
         <thead>
           <tr>
-            <th className={styles.tableHeader}>ID</th>
+            <th className={styles.tableHeader}>Ordem</th>
             <th className={styles.tableHeader}>Nome</th>
             <th className={styles.tableHeader}>CPF</th>
-            <th className={styles.tableHeader}>Situação</th>
+            <th className={styles.tableHeader}>Voto</th>
           </tr>
         </thead>
         <tbody>
-          {eleitoresFiltrados.map((eleitor) => (
+          {eleitoresFiltrados.map((eleitor, index) => (
             <tr key={eleitor.cpf} className={styles.tableRow}>
-              <td className={styles.tableCell}>{eleitor.id}</td>
+              <td className={styles.tableCell}>{index + 1}</td>
               <td className={styles.tableCell}>{eleitor.nome}</td>
               <td className={styles.tableCell}>{eleitor.cpf}</td>
-              <td className={styles.tableCell}>{eleitor.votou ? "Votou" : "Não votou"}</td>
+              <td
+                className={styles.tableCell}
+                ref={(el) => (refs.current[index] = el)}
+                style={{ color: coresTexto[index], fontWeight: "bold" }}
+              >
+                {eleitor.votou ? "Registrado!" : "Não Registrado!"}
+              </td>
             </tr>
           ))}
         </tbody>

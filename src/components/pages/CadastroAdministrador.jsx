@@ -5,18 +5,35 @@ import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import styles from "./titeleitor.module.css";
 
-const TitEleitor = (props) => {
+const CadastroAdministrador = (props) => {
   const [nome, setNome] = useState("");
   const [cpf, setCpf] = useState("");
   const [email, setEmail] = useState("");
   const [mensagem, setMensagem] = useState("");
-  const [showSuggestions, setShowSuggestions] = useState(false);
-  const [filteredSuggestions, setFilteredSuggestions] = useState([]);
+  const [mostrarSugestoes, setMostrarSugestoes] = useState(false);
+  const [filtrarSugestoes, setFiltrarSugestoes] = useState([]);
+  const [jaExisteAdministrador, setJaExisteAdministrador] = useState(false);
   const inputRef = useRef(null);
-  const suggestionsRef = useRef(null);
+  const sugestoesRef = useRef(null);
 
   const somMensagemRef = useRef(null);
   const somMensagemRef2 = useRef(null);
+
+  useEffect(() => {
+    const verificarAdministrador = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/administrador");
+        if (response.data.length > 0) {
+          setJaExisteAdministrador(true);
+          setMensagem("Já existe um administrador cadastrado neste sistema.");
+        }
+      } catch (error) {
+        console.error("Erro ao verificar administrador:", error);
+      }
+    };
+
+    verificarAdministrador();
+  }, []);
 
   useEffect(() => {
     if (!somMensagemRef.current) {
@@ -29,11 +46,11 @@ const TitEleitor = (props) => {
       somMensagemRef2.current.loop = false;
     }
 
-    if (mensagem == "Eleitor cadastrado com sucesso!") {
+    if (mensagem === "Administrador cadastrado com sucesso!") {
       somMensagemRef.current.play();
     }
 
-    if (mensagem == "Erro ao cadastrar eleitor.") {
+    if (mensagem === "Erro ao cadastrar administrador.") {
       somMensagemRef2.current.play();
     }
 
@@ -63,23 +80,23 @@ const TitEleitor = (props) => {
   ];
 
   useEffect(() => {
-    document.title = "Cadastro Eleitor";
+    document.title = "Cadastro Administrador";
     props.setValidacao(false);
     props.setPaginas(true);
 
     const handleClickOutside = (event) => {
       if (
-        suggestionsRef.current &&
-        !suggestionsRef.current.contains(event.target) &&
+        sugestoesRef.current &&
+        !sugestoesRef.current.contains(event.target) &&
         !inputRef.current.contains(event.target)
       ) {
-        setShowSuggestions(false);
+        setMostrarSugestoes(false);
       }
     };
 
     const handleEscape = (event) => {
       if (event.key === "Escape") {
-        setShowSuggestions(false);
+        setMostrarSugestoes(false);
       }
     };
 
@@ -126,38 +143,38 @@ const TitEleitor = (props) => {
     if (value.includes("@")) {
       const [localPart, domainPart] = value.split("@");
       if (!domainPart) {
-        setFilteredSuggestions(emailsFim);
-        setShowSuggestions(true);
+        setFiltrarSugestoes(emailsFim);
+        setMostrarSugestoes(true);
       } else {
         const filtered = emailsFim.filter((domain) =>
           domain.includes(domainPart)
         );
-        setFilteredSuggestions(filtered);
-        setShowSuggestions(filtered.length > 0);
+        setFiltrarSugestoes(filtered);
+        setMostrarSugestoes(filtered.length > 0);
       }
     } else {
-      setShowSuggestions(false);
+      setMostrarSugestoes(false);
     }
   };
 
   const handleSuggestionClick = (suggestion) => {
     const [localPart] = email.split("@");
     setEmail(localPart + suggestion);
-    setShowSuggestions(false);
+    setMostrarSugestoes(false);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3000/eleitores", {
+      const response = await axios.post("http://localhost:3000/administrador", {
         nome,
         cpf,
         email,
       });
 
       if (response.status === 201) {
-        setMensagem("Eleitor cadastrado com sucesso!");
+        setMensagem("Administrador cadastrado com sucesso!");
         setNome("");
         setCpf("");
         setEmail("");
@@ -166,70 +183,75 @@ const TitEleitor = (props) => {
         }, 2000);
       }
     } catch (error) {
-      setMensagem("Erro ao cadastrar eleitor.");
-      console.error("Erro ao cadastrar eleitor:", error);
+      setMensagem("Erro ao cadastrar administrador.");
+      console.error("Erro ao cadastrar administrador:", error);
     }
   };
 
   return (
     <div className={styles.titeleitorgeral}>
       <div className={styles.containereleitor}>
-        <h1 className={styles.title}>Cadastro de Eleitores</h1>
-        <form onSubmit={handleSubmit} className={styles.form}>
-          <div className={styles.inputGroup}>
-            <label className={styles.label}>Nome:</label>
-            <input
-              type="text"
-              className={styles.input}
-              value={nome}
-              onChange={(e) => setNome(e.target.value)}
-              required
-            />
-          </div>
-          <div className={styles.inputGroup}>
-            <label className={styles.label}>CPF:</label>
-            <input
-              type="text"
-              className={styles.input}
-              value={cpf}
-              onChange={handleCpfChange}
-              maxLength="14"
-              required
-            />
-          </div>
+        <h1 className={styles.title}>Cadastro de Administradores</h1>
 
-          <div className={styles.inputGroup}>
-            <label className={styles.label}>Email:</label>
-            <input
-              type="text"
-              className={styles.input}
-              value={email}
-              onChange={handleEmailChange}
-              maxLength="255"
-              ref={inputRef}
-            />
-            {showSuggestions && (
-              <ul className={styles.suggestions} ref={suggestionsRef}>
-                {filteredSuggestions.map((suggestion, index) => (
-                  <li
-                    key={index}
-                    onClick={() => handleSuggestionClick(suggestion)}
-                    className={styles.suggestionItem}
-                  >
-                    {suggestion}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-          <button type="submit" className={styles.button}>
-            Cadastrar
-          </button>
-        </form>
-        {mensagem && <p className={styles.message}>{mensagem}</p>}
+        {jaExisteAdministrador ? (
+          <p className={styles.message}>{mensagem}</p> 
+        ) : (
+          <form onSubmit={handleSubmit} className={styles.form}>
+            <div className={styles.inputGroup}>
+              <label className={styles.label}>Nome:</label>
+              <input
+                type="text"
+                className={styles.input}
+                value={nome}
+                onChange={(e) => setNome(e.target.value)}
+                required
+              />
+            </div>
+            <div className={styles.inputGroup}>
+              <label className={styles.label}>CPF:</label>
+              <input
+                type="text"
+                className={styles.input}
+                value={cpf}
+                onChange={handleCpfChange}
+                maxLength="14"
+                required
+              />
+            </div>
+
+            <div className={styles.inputGroup}>
+              <label className={styles.label}>Email:</label>
+              <input
+                type="text"
+                className={styles.input}
+                value={email}
+                onChange={handleEmailChange}
+                maxLength="255"
+                ref={inputRef}
+              />
+              {mostrarSugestoes && (
+                <ul className={styles.suggestions} ref={sugestoesRef}>
+                  {filtrarSugestoes.map((suggestion, index) => (
+                    <li
+                      key={index}
+                      onClick={() => handleSuggestionClick(suggestion)}
+                      className={styles.suggestionItem}
+                    >
+                      {suggestion}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+            <button type="submit" className={styles.button}>
+              Cadastrar
+            </button>
+          </form>
+        )}
+        {/* {mensagem && <p className={styles.message}>{mensagem}</p>} */}
       </div>
     </div>
   );
 };
 
-export default TitEleitor;
+export default CadastroAdministrador;

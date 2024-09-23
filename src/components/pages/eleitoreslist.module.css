@@ -24,6 +24,31 @@
   margin-bottom: 20px;
 }
 
+.eleicaoInfo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cargoEleicao {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.anoEleicao {
+  font-size: 1.3rem;
+}
+
+.candidato1,
+.candidato2 {
+  font-size: 1.2rem;
+}
+
+.semEleicao {
+  font-size: 1.2rem;
+  color: red;
+}
+
+
 .filterContainer {
   margin-bottom: 20px;
   width: 90%;

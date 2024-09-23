@@ -10,7 +10,7 @@
   z-index: 1;
 }
 
-/* Porcentagem e logotipo */
+
 
 .porcentagem {
   display: flex;
@@ -74,7 +74,7 @@
   background-color: #1d1d1d;
 }
 
-/* Contagem dos votos topo */
+
 
 .estatisticas {
   width: 90%;

@@ -53,7 +53,6 @@ function Urna(props) {
     confirme.play();
   };
 
-  // Função que controla o preenchimento dos números
   useEffect(() => {
     const handleKeyPress = (e) => {
       if (/\d/.test(e.key)) {
@@ -100,7 +99,6 @@ function Urna(props) {
     }
   };
 
-  // Função que controla o voto em branco
   const votosBrancos = () => {
     props.setBtnBranco(true);
   };
@@ -240,10 +238,10 @@ function Urna(props) {
             ""
           )}
 
-          {props.num2Digit !== "" &&
-          props.num2Digit !== 4 &&
-          props.num2Digit !== 1 &&
-          props.btnBranco === false ? (
+          {props.num2Digit != "" &&
+          props.num2Digit != 4 &&
+          props.num2Digit != 1 &&
+          props.btnBranco == false ? (
             <div className={styles.votonulo}>Voto Nulo</div>
           ) : (
             ""
@@ -309,7 +307,7 @@ function Urna(props) {
       props.somHeroicoRef.current.pause();
     } else if (props.btnBranco === true) {
       enviarVoto(0, cpf);
-      sonsConfirme()
+      sonsConfirme();
       props.somHeroicoRef.current.currentTime = 0;
       props.somHeroicoRef.current.pause();
     } else if (

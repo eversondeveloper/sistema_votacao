@@ -2,6 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
+import axios from "axios";
 import styles from "./validacao.module.css";
 import ApuraCpf from "./ApuraCpf";
 import somTeclas from "../assets/audio/tecla1.mp3";
@@ -10,6 +11,7 @@ export default function Validacao(props) {
   const [cpf, setCpf] = useState("");
   const [cpfTrat, setCpfTrat] = useState("");
   const [valRetorno, setValRetorno] = useState("");
+  const [eleicaoExistente, setEleicaoExistente] = useState(true);
 
   useEffect(() => {
     if (cpf !== "") sonsTeclasNum();
@@ -69,11 +71,35 @@ export default function Validacao(props) {
     };
   });
 
+  // Função para verificar se existe uma eleição ativa
+  useEffect(() => {
+    const verificarEleicao = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/eleicao");
+        if (response.data.length === 0) {
+          setEleicaoExistente(false);
+        } else {
+          setEleicaoExistente(true);
+        }
+      } catch (error) {
+        console.error("Erro ao verificar eleição:", error);
+        setEleicaoExistente(false); // Se ocorrer erro, considerar que não há eleição
+      }
+    };
+
+    verificarEleicao();
+  }, []);
+
   const confirmBtn = () => {
+    if (!eleicaoExistente) {
+      setValRetorno("Não há eleição cadastrada no momento.");
+      return;
+    }
     if (cpf !== "") sonsTeclasNum();
     if (
       valRetorno !== "Eleitor não encontrado ou erro na consulta." &&
       valRetorno !== "Eleitor já votou." &&
+      valRetorno !== "Não há eleição cadastrada no momento." &&
       valRetorno !== ""
     ) {
       props.setValidacao(false);
@@ -105,7 +131,11 @@ export default function Validacao(props) {
         <div className={styles.tela}>
           <div className={styles.cpf}>{cpfTrat}</div>
           <div className={styles.nome}>
-            {cpf.length === 11 && <ApuraCpf cpf={cpfTrat} valid={valid} />}
+            {!eleicaoExistente ? (
+              <div className={styles.error}>Não há eleição cadastrada no momento.</div>
+            ) : (
+              cpf.length === 11 && <ApuraCpf cpf={cpfTrat} valid={valid} />
+            )}
           </div>
         </div>
         <div className={styles.botoescontainer}>
