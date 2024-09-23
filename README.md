@@ -321,6 +321,9 @@ Apesar do sistema funcionar muito bem em um só hardware e não precisar do Diag
 # Modelo Físico
 
 ```sql
+--Criação do Banco de Dados
+CREATE DATABASE sistema_votacao3;
+
 -- Criação da tabela de administrador
 CREATE TABLE administrador (
     id SERIAL PRIMARY KEY,
