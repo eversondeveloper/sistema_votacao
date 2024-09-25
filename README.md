@@ -16,17 +16,20 @@
    
 5. **Pedro H Cabral da Silva de Figueiredo** – Matrícula: 202307000051  
    - Planejamento na execução do projeto, modelos e diagramas e ideias para melhorias na organização do código.
-
-
-
-
+  
 ### Atenção! Os detalhes técnicos deste projeto, estão abaixo destas instruções.
+<br>
+<br>
 
-[![Miniatura do vídeo](https://i9.ytimg.com/vi_webp/92jPVoBsUnM/mqdefault.webp?v=66f1bfb7&sqp=CLiDx7cG&rs=AOn4CLDX1cJu2h1edpB5ef7KEKkQMpnStg)](https://www.youtube.com/watch?v=92jPVoBsUnM)
 
 
 # Como colocar o projeto para rodar? 
 Siga todos os passos com atenção.
+<br>
+<br>
+![Miniatura do vídeo](imgsredme/image10.jpg)
+<br>
+<br>
 
 ## Pré-requisitos:
 - Este projeto deve ser instalado em um computador.
