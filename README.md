@@ -1,8 +1,94 @@
-Site de exemplo:
-https://eversondeveloper.github.io/sistema_votacao/
-
-
+# Trabalho de Extensão da Disciplina de Banco de Dados 2024
 # Sistema de Votação Eletrônica
+## Participantes do Grupo
+
+1. **Everson Silva de Souza** – Matrícula: 202305032347  
+   - Lógica, desenvolvimento, planejamento na execução do projeto e modelos e diagramas.
+   
+2. **João Marcos Rocha de Araújo** – Matrícula: 202309762501  
+   - Planejamento na execução do projeto, modelos e diagramas e ideias para melhorias na organização do código.
+   
+3. **Naara Reis Santana** – Matrícula: 202403255961  
+   - Planejamento na execução do projeto, modelos e diagramas e ideias para melhorias na organização do código.
+   
+4. **Douglas Belers Friedel** – Matrícula: 202305243216  
+   - Planejamento na execução do projeto, modelos e diagramas e ideias para melhorias na organização do código.
+   
+5. **Pedro H Cabral da Silva de Figueiredo** – Matrícula: 202307000051  
+   - Planejamento na execução do projeto, modelos e diagramas e ideias para melhorias na organização do código.
+  
+### Atenção! Os detalhes técnicos deste projeto, estão abaixo destas instruções.
+<br>
+<br>
+
+
+
+# Como colocar o projeto para rodar? 
+Siga todos os passos com atenção.
+<br>
+<br>
+![Miniatura do vídeo](imgsredme/image10.jpg)
+<br>
+<br>
+
+## Pré-requisitos:
+- Este projeto deve ser instalado em um computador.
+- O usuário deve ter conhecimentos básicos de informática, incluindo manipulação com terminal.
+
+Como é um projeto de sistema de votação, foi criado para rodar localmente, mas com possibilidade de comunicação com banco de dados em nuvem.  
+Quando terminar a instalação, a API já está configurada com um banco de dados Postgres em um servidor de Banco de Dados na nuvem chamado **Tembo** e já estará funcional.
+
+## ATENÇÃO!
+Ao fazer testes de preenchimento de informações, utilize informações fictícias, pois este projeto está aberto a todos que tiverem acesso e todos podem ver os dados que estão na nuvem.
+
+## Dependências antes de instalar o projeto:
+Este projeto precisa de **Node.js** e o **NPM**, que atualmente já vem instalado com o Node.js.  
+Link para baixar o Node.js:  
+[BAIXAR NODEJS](https://nodejs.org/pt)
+
+Ao clicar no link, apenas baixe o Node e instale aplicando "Next" em tudo.  
+Se quiser testar o projeto com um banco de dados local, precisa ter o **Postgres** instalado e seguir as instruções do arquivo “Criação do Banco de Dados.txt”, que acompanha os arquivos da aplicação, para instalar o modelo físico do banco de dados.
+
+## Passos de instalação:
+Baixe os arquivos que estão compactados em ZIP no link:  
+[BAIXAR ARQUIVOS](https://drive.google.com/file/d/1-dfmAGQPiYgexEdn8dHCatYosxgFIYPI/view?usp=drive_link)  
+Após baixar, descompacte e primeiro rode a API.
+
+### Para rodar a API:
+1. Entre na pasta “api”.
+2. Abra um terminal nesta pasta e digite o comando:
+   ```
+   node app
+   ```
+3. Com isso a api começa a rodar na porta 3000. Certifique-se de ter esta porta livre.
+4. Depois vamos para a pasta “urna”.
+5. Abra um terminal na pasta urna e digite o comando:
+```
+npm run start
+```
+6. Com isso o sistema começa a rodar na porta 4000. Certifique-se de ter esta porta livre.
+
+# Vamos para as instruções de utilização do sistema.
+Como é um sistema de votação, a página principal, que é a urna, não tem os links para as subpáginas. Então devemos colocar diretamente na barra de endereços e salvar em ordem como favoritos.
+Aqui estão os links e a ordem do processo:
+- http://localhost:4000/cadastroadm - página de cadastro do administrador.
+- http://localhost:4000/cadastroeleicao - página de cadastro da eleição.
+- http://localhost:4000/cadastroeleitor - página de cadastro do eleitor.
+- http://localhost:4000/listaeleitores - lista de eleitores cadastrados.
+- http://localhost:4000/ - página principal do sistema. Máquina de validação e urna.
+- http://localhost:4000/superpc - Supercomputador que faz a apuração dos votos.
+
+1. Primeiro precisa de um administrador cadastrado para ter acesso às outras partes do sistema. Cada sistema só pode ter um administrador cadastrado. 
+2. O administrador deve cadastrar uma eleição. Sem uma eleição cadastrada, ele até pode cadastrar eleitores, mas os eleitores não conseguem votar. São barrados na validação.
+3. O administrador cadastra os eleitores e pode conferir a lista de eleitores.
+4. No momento da votação, primeiro o administrador valida o eleitor com a máquina de validação. Se o eleitor for validado, ele assume a urna e registra seu voto.
+5. Após o registro dos votos, o administrador apura os votos no supercomputador e utiliza o componente “Ganador”, que fica na máquina de validação para mostrar o ganhador.
+
+## Assim está completo o processo!
+
+
+
+# DETALHES TÉCNICOS
 
 ## Introdução e Objetivos
 
