@@ -71,7 +71,7 @@ export default function Validacao(props) {
     };
   });
 
-  // Função para verificar se existe uma eleição ativa
+  
   useEffect(() => {
     const verificarEleicao = async () => {
       try {
@@ -83,7 +83,7 @@ export default function Validacao(props) {
         }
       } catch (error) {
         console.error("Erro ao verificar eleição:", error);
-        setEleicaoExistente(false); // Se ocorrer erro, considerar que não há eleição
+        setEleicaoExistente(false); 
       }
     };
 

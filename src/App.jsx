@@ -4,7 +4,7 @@ import Urna from "./components/Urna";
 import Rodape from "./components/Rodape";
 import { useEffect, useRef, useState } from "react";
 import Propostas from "./components/Propostas";
-import { Route, Routes, useLocation } from "react-router-dom"; // Importando useLocation
+import { Route, Routes, useLocation } from "react-router-dom"; 
 import SuperPC from "./components/pages/SuperPC";
 import Validacao from "./components/Validacao";
 import TitEleitor from "./components/pages/TitEleitor";
@@ -53,9 +53,9 @@ function App() {
   const [imageVenc, setImageVenc] = useState("./cand1.jpg");
   const [vencedor, setVencedor] = useState(false);
 
-  const [valido, setValido] = useState(false); // Verifica se o administrador foi validado
+  const [valido, setValido] = useState(false); 
 
-  const location = useLocation(); // Hook para pegar a localização atual
+  const location = useLocation(); 
 
   const somCompRuidoRef = useRef(null);
 
@@ -130,7 +130,7 @@ function App() {
 
   return (
     <div>
-      {!valido && location.pathname !== "/cadastroadm" && ( // Valida o administrador exceto na página de cadastro de admin
+      {!valido && location.pathname !== "/cadastroadm" && ( 
         <ValidarAdministrador
           valido={valido}
           setValido={setValido}
@@ -138,7 +138,7 @@ function App() {
         />
       )}
 
-      {valido || location.pathname === "/cadastroadm" ? ( // Permite acesso ao cadastro de admin sem validação
+      {valido || location.pathname === "/cadastroadm" ? ( 
         <>
           {vencedor && (
             <AnimVencedor

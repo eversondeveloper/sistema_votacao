@@ -178,8 +178,11 @@ const CadastroAdministrador = (props) => {
         setNome("");
         setCpf("");
         setEmail("");
+        
+        
+        setJaExisteAdministrador(true);
         setTimeout(() => {
-          setMensagem("");
+          setMensagem("Já existe um administrador cadastrado neste sistema.");
         }, 2000);
       }
     } catch (error) {
@@ -248,7 +251,6 @@ const CadastroAdministrador = (props) => {
             </button>
           </form>
         )}
-        {/* {mensagem && <p className={styles.message}>{mensagem}</p>} */}
       </div>
     </div>
   );

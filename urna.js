@@ -26,7 +26,7 @@ function createWindow() {
 }
 
 function startAPILocal() {
-  const apiPath = path.join(__dirname, 'api', 'app.js'); // Caminho absoluto
+  const apiPath = path.join(__dirname, 'api', 'app.js'); 
   apiProcess = exec(`node ${apiPath}`, (error, stdout, stderr) => {
     if (error) {
       console.error(`Erro ao iniciar API: ${error.message}`);
