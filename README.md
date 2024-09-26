@@ -21,10 +21,14 @@
 <br>
 <br>
 
-
-
 # Como colocar o projeto para rodar? 
 Siga todos os passos com atenção.
+- Clique no link para acessar a página do sistema rodando:
+https://eversondeveloper.github.io/sistema_votacao/#/
+- O sistema está rodando no github e a api está rodando na Vercel.
+
+## Assista a um vídeo rápido mostrando como usar o sistema em tempo real:
+  
 <br>
 <br>
 ![Miniatura do vídeo](imgsredme/image10.jpg)
