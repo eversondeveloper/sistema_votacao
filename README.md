@@ -32,7 +32,8 @@ https://eversondeveloper.github.io/sistema_votacao/#/
 <br>
 <br>
 
-[![Clique aqui para ver o vídeo](imgsredme/image10.jpg)]([https://www.youtube.com/watch?v=dQw4w9WgXcQ](https://youtu.be/z92i_wThwj0))
+[![Assista o vídeo!](imgsredme/image10.jpg)](https://youtu.be/z92i_wThwj0)
+
 
 <br>
 <br>
