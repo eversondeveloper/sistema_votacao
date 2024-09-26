@@ -22,7 +22,7 @@ const CadastroAdministrador = (props) => {
   useEffect(() => {
     const verificarAdministrador = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/administrador");
+        const response = await axios.get("https://apinode-git-main-everson-silvas-projects-3c80baa3.vercel.app/administrador");
         if (response.data.length > 0) {
           setJaExisteAdministrador(true);
           setMensagem("Já existe um administrador cadastrado neste sistema.");
@@ -167,7 +167,7 @@ const CadastroAdministrador = (props) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3000/administrador", {
+      const response = await axios.post("https://apinode-git-main-everson-silvas-projects-3c80baa3.vercel.app/administrador", {
         nome,
         cpf,
         email,

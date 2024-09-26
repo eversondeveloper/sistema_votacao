@@ -9,7 +9,7 @@ export default function Apuracao(props) {
   const fetchCount = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/votos/count/${props.numero}`
+        `https://apinode-git-main-everson-silvas-projects-3c80baa3.vercel.app/votos/count/${props.numero}`
       );
       setCount(response.data.count);
       if (props.valorRet) {

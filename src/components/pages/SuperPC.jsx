@@ -23,7 +23,7 @@ function SuperPC(props) {
   useEffect(() => {
     const fetchEleicoes = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/eleicao");
+        const response = await axios.get("https://apinode-git-main-everson-silvas-projects-3c80baa3.vercel.app/eleicao");
         setEleicoes(response.data);
       } catch (error) {
         console.error("Erro ao buscar eleições:", error);

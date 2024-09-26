@@ -31,7 +31,7 @@ const ValidarAdministrador = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get(`http://localhost:3000/administrador/cpf/${cpfDigitado}`);
+      const response = await axios.get(`https://apinode-git-main-everson-silvas-projects-3c80baa3.vercel.app/administrador/cpf/${cpfDigitado}`);
       
       if (response.data.encontrado) {
         props.setValido(true);

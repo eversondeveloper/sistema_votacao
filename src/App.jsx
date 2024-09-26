@@ -53,7 +53,7 @@ function App() {
   const [imageVenc, setImageVenc] = useState("./cand1.jpg");
   const [vencedor, setVencedor] = useState(false);
 
-  const [valido, setValido] = useState(false); 
+  const [valido, setValido] = useState(true); 
 
   const location = useLocation(); 
 

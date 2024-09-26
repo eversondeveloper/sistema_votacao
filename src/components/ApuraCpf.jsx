@@ -11,12 +11,12 @@ const ApuraCpf = (props) => {
     const fetchNome = async () => {
       try {
         const responseEleitor = await axios.get(
-          `http://localhost:3000/eleitores/cpf/${props.cpf}`
+          `https://apinode-git-main-everson-silvas-projects-3c80baa3.vercel.app/eleitores/cpf/${props.cpf}`
         );
 
         if (responseEleitor.data) {
           const responseVoto = await axios.get(
-            `http://localhost:3000/votos/cpf/${props.cpf}`
+            `https://apinode-git-main-everson-silvas-projects-3c80baa3.vercel.app/votos/cpf/${props.cpf}`
           );
 
           if (responseVoto.data.votou) {

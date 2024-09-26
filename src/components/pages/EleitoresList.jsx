@@ -22,7 +22,7 @@ const EleitoresList = (props) => {
     
     const fetchEleicao = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/eleicao");
+        const response = await axios.get("https://apinode-git-main-everson-silvas-projects-3c80baa3.vercel.app/eleicao");
         const eleicao = response.data[0]; 
         setDadosEleicao(eleicao);
       } catch (err) {
@@ -33,7 +33,7 @@ const EleitoresList = (props) => {
     const fetchEleitores = async () => {
       try {
         const responseEleitores = await axios.get(
-          "http://localhost:3000/eleitores"
+          "https://apinode-git-main-everson-silvas-projects-3c80baa3.vercel.app/eleitores"
         );
         const eleitoresData = responseEleitores.data;
 
@@ -43,7 +43,7 @@ const EleitoresList = (props) => {
         const eleitoresComStatus = await Promise.all(
           eleitoresData.map(async (eleitor) => {
             const responseVoto = await axios.get(
-              `http://localhost:3000/votos/cpf/${eleitor.cpf}`
+              `https://apinode-git-main-everson-silvas-projects-3c80baa3.vercel.app/votos/cpf/${eleitor.cpf}`
             );
             return {
               ...eleitor,

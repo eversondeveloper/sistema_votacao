@@ -75,7 +75,7 @@ export default function Validacao(props) {
   useEffect(() => {
     const verificarEleicao = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/eleicao");
+        const response = await axios.get("https://apinode-git-main-everson-silvas-projects-3c80baa3.vercel.app/eleicao");
         if (response.data.length === 0) {
           setEleicaoExistente(false);
         } else {

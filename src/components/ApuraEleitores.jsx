@@ -8,7 +8,7 @@ export default function ApuraEleitores(props) {
 
   const fetchCount = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/eleitores");
+      const response = await axios.get("https://apinode-git-main-everson-silvas-projects-3c80baa3.vercel.app/eleitores");
       setCount(response.data.length);
       if (props.pegarValorRet5) {
         props.pegarValorRet5(response.data.length);
