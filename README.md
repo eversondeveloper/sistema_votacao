@@ -1,5 +1,14 @@
 # Trabalho de Extensão da Disciplina de Banco de Dados 2024
 # Sistema de Votação Eletrônica
+## FRONTEND
+- Hospedado neste repositório.
+- Rodando no Github pages: https://eversondeveloper.github.io/sistema_votacao/#/
+
+## BACKEND
+- API hospedada no reposítório do Github: https://github.com/eversondeveloper/apinode
+- API rodando na Vercel.
+- BANCO DE DADOS hospedado no site Tembo.
+
 ## Participantes do Grupo
 
 1. **Everson Silva de Souza** – Matrícula: 202305032347  
