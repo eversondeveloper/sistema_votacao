@@ -166,7 +166,7 @@ function SuperPC(props) {
             >
               <div className={styles.porc1}>
                 <img
-                  src={"/cand1.jpg"}
+                  src={"./cand1.jpg"}
                   alt="Candidato Pedro"
                   className={styles.imgpol}
                 />
@@ -217,7 +217,7 @@ function SuperPC(props) {
             >
               <div className={styles.porc1}>
                 <img
-                  src={"/cand2.jpg"}
+                  src={"./cand2.jpg"}
                   alt={noCand2}
                   className={styles.imgpol}
                 />

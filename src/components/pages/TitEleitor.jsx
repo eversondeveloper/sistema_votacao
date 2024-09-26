@@ -20,11 +20,11 @@ const TitEleitor = (props) => {
 
   useEffect(() => {
     if (!somMensagemRef.current) {
-      somMensagemRef.current = new Audio("/confirmatitulo.mp3");
+      somMensagemRef.current = new Audio("./confirmatitulo.mp3");
       somMensagemRef.current.volume = 1;
       somMensagemRef.current.loop = false;
 
-      somMensagemRef2.current = new Audio("/somtituloerro.mp3");
+      somMensagemRef2.current = new Audio("./somtituloerro.mp3");
       somMensagemRef2.current.volume = 1;
       somMensagemRef2.current.loop = false;
     }
