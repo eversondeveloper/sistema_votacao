@@ -31,7 +31,6 @@
   align-items: center;
   justify-content: space-between;
   background-color: #00000087;
-  z-index: 1;
   background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.482)),
     url(/fundogeral5.jpg);
     background-size: cover;

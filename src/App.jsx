@@ -4,7 +4,7 @@ import Urna from "./components/Urna";
 import Rodape from "./components/Rodape";
 import { useEffect, useRef, useState } from "react";
 import Propostas from "./components/Propostas";
-import { Route, Routes, useLocation } from "react-router-dom"; 
+import { Route, Routes, useLocation } from "react-router-dom";
 import SuperPC from "./components/pages/SuperPC";
 import Validacao from "./components/Validacao";
 import TitEleitor from "./components/pages/TitEleitor";
@@ -15,6 +15,7 @@ import ApuraEleitores from "./components/ApuraEleitores";
 import CadastroEleicao from "./components/pages/CadastroEleicao";
 import CadastroAdministrador from "./components/pages/CadastroAdministrador";
 import ValidarAdministrador from "./components/ValidarAdministrador";
+import BtnsPags from "./components/BtnsPags";
 
 function App() {
   const [tempoAtualiz, setTempoAtualize] = useState(10);
@@ -53,9 +54,9 @@ function App() {
   const [imageVenc, setImageVenc] = useState("./cand1.jpg");
   const [vencedor, setVencedor] = useState(false);
 
-  const [valido, setValido] = useState(true); 
+  const [valido, setValido] = useState(true);
 
-  const location = useLocation(); 
+  const location = useLocation();
 
   const somCompRuidoRef = useRef(null);
 
@@ -130,7 +131,7 @@ function App() {
 
   return (
     <div>
-      {!valido && location.pathname !== "/cadastroadm" && ( 
+      {!valido && location.pathname !== "/cadastroadm" && (
         <ValidarAdministrador
           valido={valido}
           setValido={setValido}
@@ -138,7 +139,18 @@ function App() {
         />
       )}
 
-      {valido || location.pathname === "/cadastroadm" ? ( 
+      {valido && (
+        <BtnsPags
+          validacao={validacao}
+          setValidacao={setValidacao}
+          cpfAtual={cpfAtual}
+          setCpfAtual={setCpfAtual}
+          paginas={paginas}
+          setPaginas={setPaginas}
+        />
+      )}
+
+      {valido || location.pathname === "/cadastroadm" ? (
         <>
           {vencedor && (
             <AnimVencedor
