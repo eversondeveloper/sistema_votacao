@@ -6,7 +6,7 @@
   "private": false,
   "homepage": "https://eversonsilvadeveloper.github.io/sistema_votacao",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
