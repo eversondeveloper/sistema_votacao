@@ -25,7 +25,6 @@ export default function BtnsPags(props) {
       onMouseEnter={() => setMenuOpen(true)}
       onMouseLeave={() => setMenuOpen(false)}
     >
-      {/* Troca o ícone conforme o estado do menu */}
       <div
         className={styles.menuButton}
         style={{ display: menuOpen && "none" }}
@@ -35,26 +34,10 @@ export default function BtnsPags(props) {
 
       {menuOpen && (
         <div className={styles.menuItems}>
-          {/* <button
-            className={styles.btns}
-            onClick={() => {
-              navigate("/cadastroadm");
-            }}
-          >
-            Cadastro Administrador
-          </button>
           <button
             className={styles.btns}
             onClick={() => {
-              navigate("/cadastroeleicao");
-            }}
-          >
-            Cadastro Eleições
-          </button> */}
-          <button
-            className={styles.btns}
-            onClick={() => {
-              navigate("/cadastroeleitor");
+              navigate("./cadastroeleitor");
             }}
           >
             Cadastro Eleitores
@@ -62,7 +45,7 @@ export default function BtnsPags(props) {
           <button
             className={styles.btns}
             onClick={() => {
-              navigate("/listaeleitores");
+              navigate("./listaeleitores");
             }}
           >
             Lista de Eleitores
@@ -72,7 +55,7 @@ export default function BtnsPags(props) {
             onClick={() => {
               props.setValidacao(true);
               props.setPaginas(false);
-              navigate("/");
+              navigate("./");
             }}
           >
             Urna Eletrônica
@@ -80,16 +63,17 @@ export default function BtnsPags(props) {
           <button
             className={styles.btns}
             onClick={() => {
-              navigate("/superpc");
+              navigate("./superpc");
             }}
           >
             Supercomputador
           </button>
           <button
             className={styles.btns}
-            style={{ backgroundColor: "red" }}
             onClick={() => {
-              apagarDados();
+              if (window.confirm("Tem certeza que deseja apagar todos os eleitores e votos?")) {
+                apagarDados();
+              }
             }}
           >
             Apagar Eleitores/Votos

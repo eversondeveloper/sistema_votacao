@@ -20,31 +20,41 @@
   .menuItems {
     display: flex;
     flex-direction: column;
-    background-color: #ffffff;
-    border-radius: 10px;
     padding: 10px;
     margin-top: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    animation: slideDown 0.3s ease; /* Animação suave ao abrir */
+    animation: slideDown 0.3s ease; 
+    background-color: #14121A;
+    border-radius: 15px;
   }
   
   .btns {
-    background-color: #007bff;
+    background-color: #282434;
     color: #ffffff;
     padding: 10px;
     margin: 5px 0;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;
     height: 60px;
-    width: 150px;
+    width: 250px;
+    border-radius: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
   }
   
   .btns:hover {
-    background-color: #007bff;
-    color: #00346b;
+    background-color: #322d41;
+    color: #14121A;
+  }
+
+  .btns:nth-child(5){
+    background-color: rgb(179, 80, 0);
+  }
+
+  .btns:nth-child(5):hover{
+    background-color: rgb(216, 97, 0);
   }
   
   @keyframes slideDown {
