@@ -8,23 +8,6 @@
 - API hospedada no reposítório do Github: https://github.com/eversondeveloper/apinode
 - API rodando na Vercel.
 - BANCO DE DADOS hospedado no site Tembo.
-
-## Participantes do Grupo
-
-1. **Everson Silva de Souza** – Matrícula: 202305032347  
-   - Lógica, desenvolvimento, planejamento na execução do projeto e modelos e diagramas.
-   
-2. **João Marcos Rocha de Araújo** – Matrícula: 202309762501  
-   - Planejamento na execução do projeto, modelos e diagramas e ideias para melhorias na organização do código.
-   
-3. **Naara Reis Santana** – Matrícula: 202403255961  
-   - Planejamento na execução do projeto, modelos e diagramas e ideias para melhorias na organização do código.
-   
-4. **Douglas Belers Friedel** – Matrícula: 202305243216  
-   - Planejamento na execução do projeto, modelos e diagramas e ideias para melhorias na organização do código.
-   
-5. **Pedro H Cabral da Silva de Figueiredo** – Matrícula: 202307000051  
-   - Planejamento na execução do projeto, modelos e diagramas e ideias para melhorias na organização do código.
   
 ### Atenção! Os detalhes técnicos deste projeto, estão abaixo destas instruções.
 <br>
