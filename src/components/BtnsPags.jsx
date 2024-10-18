@@ -68,7 +68,7 @@ export default function BtnsPags(props) {
           >
             Supercomputador
           </button>
-          <button
+          {/* <button
             className={styles.btns}
             onClick={() => {
               if (window.confirm("Tem certeza que deseja apagar todos os eleitores e votos?")) {
@@ -77,7 +77,7 @@ export default function BtnsPags(props) {
             }}
           >
             Apagar Eleitores/Votos
-          </button>
+          </button> */}
         </div>
       )}
     </div>
