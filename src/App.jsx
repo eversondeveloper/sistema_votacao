@@ -163,7 +163,7 @@ function App() {
           {!vencedor && (
             <>
               <Routes>
-                <Route
+                {/* <Route
                   path="/cadastroadm"
                   element={
                     <CadastroAdministrador
@@ -174,8 +174,8 @@ function App() {
                       somHeroicoRef={somHeroicoRef}
                     />
                   }
-                />
-                <Route
+                /> */}
+                {/* <Route
                   path="/cadastroeleicao"
                   element={
                     <CadastroEleicao
@@ -186,7 +186,7 @@ function App() {
                       somHeroicoRef={somHeroicoRef}
                     />
                   }
-                />
+                /> */}
                 <Route
                   path="/superpc"
                   element={

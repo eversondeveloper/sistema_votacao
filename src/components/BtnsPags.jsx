@@ -34,6 +34,22 @@ export default function BtnsPags(props) {
 
       {menuOpen && (
         <div className={styles.menuItems}>
+          {/* <button
+            className={styles.btns}
+            onClick={() => {
+              navigate("./cadastroadm");
+            }}
+          >
+            Cadastro Administrador
+          </button>
+          <button
+            className={styles.btns}
+            onClick={() => {
+              navigate("./cadastroeleicao");
+            }}
+          >
+            Cadastro Eleição
+          </button> */}
           <button
             className={styles.btns}
             onClick={() => {

@@ -49,11 +49,11 @@
     color: #14121A;
   }
 
-  .btns:nth-child(5){
+  .btns:nth-child(7){
     background-color: rgb(179, 80, 0);
   }
 
-  .btns:nth-child(5):hover{
+  .btns:nth-child(7):hover{
     background-color: rgb(216, 97, 0);
   }
   

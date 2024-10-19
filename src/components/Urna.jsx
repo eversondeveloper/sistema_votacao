@@ -370,7 +370,7 @@ function Urna(props) {
           <div className={styles.btn1}>
             <input
               type="button"
-              value="1"
+              value={1}
               className={styles.bton1}
               onClick={(e) => preencheNumeros(e.target.value)}
               title="Tecla 1"
@@ -391,7 +391,7 @@ function Urna(props) {
             />
             <input
               type="button"
-              value="4"
+              value={4}
               className={styles.bton4}
               onClick={(e) => preencheNumeros(e.target.value)}
               title="Tecla 4"
