@@ -30,8 +30,9 @@ const ValidarAdministrador = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      // Atualizado para se conectar com a porta 3001 configurada localmente
       const response = await axios.get(
-        `https://apinode-git-main-everson-silvas-projects-3c80baa3.vercel.app/administrador/cpf/${cpfDigitado}`
+        `http://localhost:3001/administrador/cpf/${cpfDigitado}`
       );
 
       if (response.data.encontrado) {

@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/prop-types */
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import styles from "./eleitoreslist.module.css";
@@ -19,10 +19,10 @@ const EleitoresList = (props) => {
   }, []);
 
   useEffect(() => {
-    
     const fetchEleicao = async () => {
       try {
-        const response = await axios.get("https://apinode-git-main-everson-silvas-projects-3c80baa3.vercel.app/eleicao");
+        // Alterado para apontar para a API local na porta 3001
+        const response = await axios.get("http://localhost:3001/eleicao");
         const eleicao = response.data[0]; 
         setDadosEleicao(eleicao);
       } catch (err) {
@@ -32,18 +32,19 @@ const EleitoresList = (props) => {
 
     const fetchEleitores = async () => {
       try {
+        // Alterado para apontar para a API local na porta 3001
         const responseEleitores = await axios.get(
-          "https://apinode-git-main-everson-silvas-projects-3c80baa3.vercel.app/eleitores"
+          "http://localhost:3001/eleitores"
         );
         const eleitoresData = responseEleitores.data;
 
-        
         eleitoresData.sort((a, b) => a.nome.localeCompare(b.nome));
 
         const eleitoresComStatus = await Promise.all(
           eleitoresData.map(async (eleitor) => {
+            // Alterado para apontar para a API local na porta 3001
             const responseVoto = await axios.get(
-              `https://apinode-git-main-everson-silvas-projects-3c80baa3.vercel.app/votos/cpf/${eleitor.cpf}`
+              `http://localhost:3001/votos/cpf/${eleitor.cpf}`
             );
             return {
               ...eleitor,
@@ -54,7 +55,6 @@ const EleitoresList = (props) => {
 
         setEleitores(eleitoresComStatus);
 
-        
         const novasCores = eleitoresComStatus.map((eleitor) =>
           eleitor.votou ? "blue" : "red"
         );
@@ -110,7 +110,7 @@ const EleitoresList = (props) => {
             </h4>
           </>
         ) : (
-          <p className={styles.semEleicao}>Não há eleições cadastradas</p>
+          <p className={styles.semEleicao}>Não hay eleições cadastradas</p>
         )}
       </div>
       <h1 className={styles.title}>Lista de Eleitores</h1>

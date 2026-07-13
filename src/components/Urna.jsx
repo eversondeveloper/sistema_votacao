@@ -30,7 +30,8 @@ function Urna(props) {
 
   const enviarVoto = async (number, cpf) => {
     try {
-      const response = await axios.post("https://apinode-git-main-everson-silvas-projects-3c80baa3.vercel.app/votos", {
+      // Alterado para apontar para a API local na porta 3001
+      const response = await axios.post("http://localhost:3001/votos", {
         number: number,
         cpf: cpf,
       });

@@ -9,8 +9,9 @@ export default function BtnsPags(props) {
 
   const apagarDados = async () => {
     try {
+      // Alterado para apontar para a API local na porta 3001
       const resposta = await axios.delete(
-        "https://apinode-git-main-everson-silvas-projects-3c80baa3.vercel.app/resetar-eleitores-votos"
+        "http://localhost:3001/resetar-eleitores-votos"
       );
       alert(resposta.data.mensagem);
     } catch (error) {

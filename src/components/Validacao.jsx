@@ -71,11 +71,11 @@ export default function Validacao(props) {
     };
   });
 
-  
   useEffect(() => {
     const verificarEleicao = async () => {
       try {
-        const response = await axios.get("https://apinode-git-main-everson-silvas-projects-3c80baa3.vercel.app/eleicao");
+        // Alterado para apontar para a API local na porta 3001
+        const response = await axios.get("http://localhost:3001/eleicao");
         if (response.data.length === 0) {
           setEleicaoExistente(false);
         } else {

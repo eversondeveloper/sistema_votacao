@@ -175,7 +175,7 @@ function App() {
                     />
                   }
                 /> */}
-                {/* <Route
+                /* <Route
                   path="/cadastroeleicao"
                   element={
                     <CadastroEleicao
@@ -186,7 +186,7 @@ function App() {
                       somHeroicoRef={somHeroicoRef}
                     />
                   }
-                /> */}
+                /> */
                 <Route
                   path="/superpc"
                   element={

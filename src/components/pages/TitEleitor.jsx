@@ -150,7 +150,8 @@ const TitEleitor = (props) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("https://apinode-git-main-everson-silvas-projects-3c80baa3.vercel.app/eleitores", {
+      // Alterado para apontar para a API local na porta 3001
+      const response = await axios.post("http://localhost:3001/eleitores", {
         nome,
         cpf,
         email,

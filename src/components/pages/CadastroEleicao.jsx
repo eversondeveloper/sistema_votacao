@@ -23,7 +23,8 @@ const CadastroEleicao = (props) => {
 
     const fetchEleicoes = async () => {
       try {
-        const response = await axios.get("https://apinode-git-main-everson-silvas-projects-3c80baa3.vercel.app/eleicao");
+        // Alterado para apontar para a API local na porta 3001
+        const response = await axios.get("http://localhost:3001/eleicao");
         setEleicoes(response.data);
       } catch (error) {
         console.error("Erro ao buscar eleições:", error);
@@ -38,7 +39,8 @@ const CadastroEleicao = (props) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("https://apinode-git-main-everson-silvas-projects-3c80baa3.vercel.app/eleicao", {
+      // Alterado para apontar para a API local na porta 3001
+      const response = await axios.post("http://localhost:3001/eleicao", {
         cargo,
         ano,
         nomecand1: nomeCand1,
@@ -62,7 +64,8 @@ const CadastroEleicao = (props) => {
         }, 2000);
 
         const fetchEleicoes = async () => {
-          const response = await axios.get("https://apinode-git-main-everson-silvas-projects-3c80baa3.vercel.app/eleicao");
+          // Alterado para apontar para a API local na porta 3001
+          const response = await axios.get("http://localhost:3001/eleicao");
           setEleicoes(response.data);
         };
         fetchEleicoes();
@@ -161,7 +164,6 @@ const CadastroEleicao = (props) => {
 
       </div>
       <div className={styles.divdados}>
-        {/* Tabela de Eleições no formato vertical */}
         <div className={styles.divdados}>
           <h2 className={styles.title}>Dados das Eleições</h2>
           <div className={styles.tabelaEleicao}>

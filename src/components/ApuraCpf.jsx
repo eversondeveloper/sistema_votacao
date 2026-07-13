@@ -10,13 +10,15 @@ const ApuraCpf = (props) => {
   useEffect(() => {
     const fetchNome = async () => {
       try {
+        // Alterado para apontar para a API local na porta 3001
         const responseEleitor = await axios.get(
-          `https://apinode-git-main-everson-silvas-projects-3c80baa3.vercel.app/eleitores/cpf/${props.cpf}`
+          `http://localhost:3001/eleitores/cpf/${props.cpf}`
         );
 
         if (responseEleitor.data) {
+          // Alterado para apontar para a API local na porta 3001
           const responseVoto = await axios.get(
-            `https://apinode-git-main-everson-silvas-projects-3c80baa3.vercel.app/votos/cpf/${props.cpf}`
+            `http://localhost:3001/votos/cpf/${props.cpf}`
           );
 
           if (responseVoto.data.votou) {

@@ -19,11 +19,13 @@ function SuperPC(props) {
   const [nuCand1, setNucand1] = useState("");
   const [noCand2, setNoCand2] = useState("");
   const [nuCand2, setNucand2] = useState("");
+  const [mensagem, setMensagem] = useState(""); // Adicionado para evitar erro de variável não definida
 
   useEffect(() => {
     const fetchEleicoes = async () => {
       try {
-        const response = await axios.get("https://apinode-git-main-everson-silvas-projects-3c80baa3.vercel.app/eleicao");
+        // Alterado para apontar para a API local na porta 3001
+        const response = await axios.get("http://localhost:3001/eleicao");
         setEleicoes(response.data);
       } catch (error) {
         console.error("Erro ao buscar eleições:", error);
@@ -36,8 +38,8 @@ function SuperPC(props) {
 
   useEffect(() => {
     eleicoes.map((eleicao) => {
-      setCargoEleic(eleicao.cargo)
-      setAnoEleic(eleicao.ano)
+      setCargoEleic(eleicao.cargo);
+      setAnoEleic(eleicao.ano);
       setNoCand1(eleicao.nomecand1);
       setNucand1(eleicao.numcand1);
       setNoCand2(eleicao.nomecand2);
@@ -52,9 +54,9 @@ function SuperPC(props) {
     let diferenca = Math.abs(totalEleitores - totalVotos);
     let porcentagem = (diferenca / totalEleitores).toFixed(2) * 100;
 
-    if(isNaN(porcentagem)){
-      return 0
-    }else{
+    if (isNaN(porcentagem)) {
+      return 0;
+    } else {
       return porcentagem + "%";
     }
   };
@@ -88,7 +90,7 @@ function SuperPC(props) {
     }, 1000);
 
     return () => {
-      intervalo;
+      clearInterval(intervalo); // Corrigido o retorno do intervalo para limpar corretamente
     };
   });
 
@@ -126,7 +128,9 @@ function SuperPC(props) {
               <div className={styles.dindin}>Super Computer</div>
             </div>
             <Cronometro minInicial={Number(props.tempoAtualiz)} />
-            <div className={styles.datatipo}>Tipo: {cargoEleic} / {anaEleic}</div>
+            <div className={styles.datatipo}>
+              Tipo: {cargoEleic} / {anaEleic}
+            </div>
           </div>
         </div>
         <div className={styles.result}>
@@ -140,7 +144,6 @@ function SuperPC(props) {
                   <p className={styles.candnumnomes}>
                     {nuCand1} - {noCand1}
                   </p>
-
                   {props.v1}
                 </div>
               </div>
