@@ -64,11 +64,11 @@ function App() {
   somHeroicoRef.current.volume = 0.3;
   somHeroicoRef.current.loop = true;
 
-  const somCand1 = useRef(new Audio(`./supermanmusic.mp3`));
+  const somCand1 = useRef(new Audio(`./musicand2.mp3`));
   somCand1.current.volume = 1;
   somCand1.current.loop = true;
 
-  const somCand2 = useRef(new Audio(`./batmanmusic.mp3`));
+  const somCand2 = useRef(new Audio(`./musicand1.mp3`));
   somCand2.current.volume = 1;
   somCand2.current.loop = true;
 
