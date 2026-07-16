@@ -1,88 +1,236 @@
-.eleitoresList {
+/* ==========================================
+   CONTAINER PRINCIPAL (TELA COMPLETA)
+   ========================================== */
+.eleitoresListGeral {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(6, 10, 18, 0.96);
+  backdrop-filter: blur(12px);
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #e2e8f0;
+  padding: 2vw;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.containertabela {
+  width: 90%;
+  max-width: 1100px;
+  height: 90%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  background-color: #f9f9f9;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  height: 100vh;
-  background: url(/fundogeral.png);
-  width: 100vw;
-  overflow: auto;
+  gap: 1.5vh;
 }
 
-.title {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #333;
-  font-family: 'Arial', sans-serif;
-}
-
-.error {
-  color: #d9534f;
-  font-family: 'Arial', sans-serif;
-  margin-bottom: 20px;
-}
-
+/* ==========================================
+   PAINEL DE INFORMAÇÕES DA ELEIÇÃO ATIVA
+   ========================================== */
 .eleicaoInfo {
-  text-align: center;
-  margin-bottom: 20px;
+  width: 100%;
+  background: rgba(13, 20, 35, 0.4);
+  border: 1px solid rgba(0, 242, 254, 0.15);
+  border-radius: 8px;
+  padding: 1.5vh 2vw;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
 }
 
-.cargoEleicao {
-  font-size: 1.5rem;
-  font-weight: bold;
+.infoGrid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5vw;
 }
 
-.anoEleicao {
-  font-size: 1.3rem;
+.infoItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
-.candidato1,
-.candidato2 {
-  font-size: 1.2rem;
+.infoLabel {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10px;
+  font-weight: 800;
+  color: rgba(0, 242, 254, 0.65);
+  letter-spacing: 1px;
+}
+
+.infoValue {
+  font-size: 1vw;
+  font-weight: 600;
+  color: #ffffff;
 }
 
 .semEleicao {
-  font-size: 1.2rem;
-  color: red;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: #ff3b30;
+  letter-spacing: 1.5px;
+  text-align: center;
+  margin: 0;
 }
 
+/* ==========================================
+   TÍTULO E ERROS
+   ========================================== */
+.title {
+  font-size: 1.8vw;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: #ffffff;
+  margin: 0;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+}
 
+.error {
+  font-family: 'Courier New', Courier, monospace;
+  color: #ff3b30;
+  background: rgba(255, 59, 48, 0.08);
+  border: 1px solid rgba(255, 59, 48, 0.2);
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 11px;
+  text-align: center;
+  margin: 0;
+}
+
+/* ==========================================
+   FILTRO DE PESQUISA AVANÇADO
+   ========================================== */
 .filterContainer {
-  margin-bottom: 20px;
-  width: 90%;
+  width: 100%;
 }
 
 .filterInput {
   width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 1vh 1.5vw;
+  font-size: 13px;
+  color: #ffffff;
+  background: rgba(13, 20, 35, 0.6);
+  border: 1px solid rgba(0, 242, 254, 0.2);
+  border-radius: 6px;
+  outline: none;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.filterInput:focus {
+  border-color: #00f2fe;
+  box-shadow: 0 0 12px rgba(0, 242, 254, 0.2);
+  background: rgba(13, 20, 35, 0.8);
+}
+
+.filterInput::placeholder {
+  color: rgba(226, 232, 240, 0.35);
+}
+
+/* ==========================================
+   TABELA HOLOGRÁFICA
+   ========================================== */
+.tableResponsive {
+  width: 100%;
+  flex-grow: 1;
+  overflow-y: auto;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  background: rgba(13, 20, 35, 0.3);
 }
 
 .table {
-  width: 90%;
+  width: 100%;
   border-collapse: collapse;
-  background-color: #fff;
+  text-align: left;
 }
 
 .tableHeader {
-  background-color: #007bff;
-  color: #fff;
-  font-weight: bold;
-  padding: 10px;
-  text-align: left;
-  font-family: 'Arial', sans-serif;
+  background: rgba(10, 15, 30, 0.95);
+  color: #00f2fe;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 1px;
+  padding: 12px 18px;
+  border-bottom: 2px solid rgba(0, 242, 254, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 2;
 }
 
-.tableRow:nth-child(even) {
-  background-color: #f2f2f2;
+.tableRow {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  transition: background-color 0.2s ease;
+}
+
+.tableRow:hover {
+  background-color: rgba(0, 242, 254, 0.02);
 }
 
 .tableCell {
-  padding: 10px;
-  border: 1px solid #ddd;
-  font-family: 'Arial', sans-serif;
+  padding: 10px 18px;
+  font-size: 12px;
+  color: rgba(226, 232, 240, 0.8);
+}
+
+.tableName {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* ==========================================
+   BADGES DE STATUS OPERACIONAL
+   ========================================== */
+.badgeSuccess, .badgeDanger {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  display: inline-block;
+}
+
+.badgeSuccess {
+  background: rgba(0, 255, 135, 0.06);
+  border: 1px solid rgba(0, 255, 135, 0.25);
+  color: #00ff87;
+  text-shadow: 0 0 8px rgba(0, 255, 135, 0.2);
+}
+
+.badgeDanger {
+  background: rgba(255, 59, 48, 0.06);
+  border: 1px solid rgba(255, 59, 48, 0.25);
+  color: #ff3b30;
+  text-shadow: 0 0 8px rgba(255, 59, 48, 0.2);
+}
+
+/* ==========================================
+   BARRA DE ROLAGEM
+   ========================================== */
+.tableResponsive::-webkit-scrollbar {
+  width: 6px;
+}
+
+.tableResponsive::-webkit-scrollbar-track {
+  background: rgba(10, 15, 30, 0.5);
+}
+
+.tableResponsive::-webkit-scrollbar-thumb {
+  background: rgba(0, 242, 254, 0.2);
+  border-radius: 3px;
+}
+
+.tableResponsive::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 242, 254, 0.4);
 }

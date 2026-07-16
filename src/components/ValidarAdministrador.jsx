@@ -55,7 +55,7 @@ const ValidarAdministrador = (props) => {
           <form onSubmit={handleSubmit} className={styles.formValidacao}>
             <div className={styles.inputGroup}>
               <label className={styles.label}>
-                CPF do Administrador: (Use 100.000.000-00)
+                
               </label>
               <input
                 type="text"

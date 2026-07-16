@@ -29,11 +29,11 @@ const TitEleitor = (props) => {
       somMensagemRef2.current.loop = false;
     }
 
-    if (mensagem == "Eleitor cadastrado com sucesso!") {
+    if (mensagem === "Eleitor cadastrado com sucesso!") {
       somMensagemRef.current.play();
     }
 
-    if (mensagem == "Erro ao cadastrar eleitor.") {
+    if (mensagem === "Erro ao cadastrar eleitor.") {
       somMensagemRef2.current.play();
     }
 
@@ -150,7 +150,6 @@ const TitEleitor = (props) => {
     e.preventDefault();
 
     try {
-      // Alterado para apontar para a API local na porta 3001
       const response = await axios.post("http://localhost:3001/eleitores", {
         nome,
         cpf,
@@ -164,7 +163,7 @@ const TitEleitor = (props) => {
         setEmail("");
         setTimeout(() => {
           setMensagem("");
-        }, 2000);
+        }, 3000);
       }
     } catch (error) {
       setMensagem("Erro ao cadastrar eleitor.");
@@ -175,32 +174,39 @@ const TitEleitor = (props) => {
   return (
     <div className={styles.titeleitorgeral}>
       <div className={styles.containereleitor}>
-        <h1 className={styles.title}>Cadastro de Eleitores</h1>
+        <div className={styles.headerTerminal}>
+          <span className={styles.statusDot}></span>
+          <h1 className={styles.title}>Cadastro de Eleitores</h1>
+        </div>
+
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.inputGroup}>
-            <label className={styles.label}>Nome:</label>
+            <label className={styles.label}>NOME COMPLETO</label>
             <input
               type="text"
               className={styles.input}
               value={nome}
               onChange={(e) => setNome(e.target.value)}
+              placeholder="Digite o nome do eleitor"
               required
             />
           </div>
+
           <div className={styles.inputGroup}>
-            <label className={styles.label}>CPF:</label>
+            <label className={styles.label}>CPF / IDENTIFICAÇÃO</label>
             <input
               type="text"
               className={styles.input}
               value={cpf}
               onChange={handleCpfChange}
               maxLength="14"
+              placeholder="000.000.000-00"
               required
             />
           </div>
 
           <div className={styles.inputGroup}>
-            <label className={styles.label}>Email:</label>
+            <label className={styles.label}>ENDEREÇO DE EMAIL</label>
             <input
               type="text"
               className={styles.input}
@@ -208,6 +214,7 @@ const TitEleitor = (props) => {
               onChange={handleEmailChange}
               maxLength="255"
               ref={inputRef}
+              placeholder="eleitor@provedor.com"
             />
             {showSuggestions && (
               <ul className={styles.suggestions} ref={suggestionsRef}>
@@ -223,11 +230,21 @@ const TitEleitor = (props) => {
               </ul>
             )}
           </div>
+
           <button type="submit" className={styles.button}>
-            Cadastrar
+            REGISTRAR NO SISTEMA
           </button>
         </form>
-        {mensagem && <p className={styles.message}>{mensagem}</p>}
+
+        {mensagem && (
+          <div
+            className={`${styles.messageContainer} ${
+              mensagem.includes("sucesso") ? styles.success : styles.error
+            }`}
+          >
+            {mensagem}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./btnspags.module.css";
@@ -9,7 +10,6 @@ export default function BtnsPags(props) {
 
   const apagarDados = async () => {
     try {
-      // Alterado para apontar para a API local na porta 3001
       const resposta = await axios.delete(
         "http://localhost:3001/resetar-eleitores-votos"
       );
@@ -26,47 +26,28 @@ export default function BtnsPags(props) {
       onMouseEnter={() => setMenuOpen(true)}
       onMouseLeave={() => setMenuOpen(false)}
     >
-      <div
-        className={styles.menuButton}
-        style={{ display: menuOpen && "none" }}
-      >
-        {menuOpen ? "✖" : "☰"}
+      <div className={`${styles.menuButton} ${menuOpen ? styles.active : ""}`}>
+        <span className={styles.icon}>{menuOpen ? "✕" : "☰"}</span>
       </div>
 
       {menuOpen && (
         <div className={styles.menuItems}>
-          {/* <button
-            className={styles.btns}
-            onClick={() => {
-              navigate("./cadastroadm");
-            }}
-          >
-            Cadastro Administrador
-          </button>
+          <div className={styles.menuHeader}>CONEXÕES SISTEMA</div>
+          
           <button
             className={styles.btns}
-            onClick={() => {
-              navigate("./cadastroeleicao");
-            }}
-          >
-            Cadastro Eleição
-          </button> */}
-          <button
-            className={styles.btns}
-            onClick={() => {
-              navigate("./cadastroeleitor");
-            }}
+            onClick={() => navigate("./cadastroeleitor")}
           >
             Cadastro Eleitores
           </button>
+          
           <button
             className={styles.btns}
-            onClick={() => {
-              navigate("./listaeleitores");
-            }}
+            onClick={() => navigate("./listaeleitores")}
           >
             Lista de Eleitores
           </button>
+          
           <button
             className={styles.btns}
             onClick={() => {
@@ -77,24 +58,13 @@ export default function BtnsPags(props) {
           >
             Urna Eletrônica
           </button>
+          
           <button
-            className={styles.btns}
-            onClick={() => {
-              navigate("./superpc");
-            }}
+            className={`${styles.btns} ${styles.btnHighlight}`}
+            onClick={() => navigate("./superpc")}
           >
             Supercomputador
           </button>
-          {/* <button
-            className={styles.btns}
-            onClick={() => {
-              if (window.confirm("Tem certeza que deseja apagar todos os eleitores e votos?")) {
-                apagarDados();
-              }
-            }}
-          >
-            Apagar Eleitores/Votos
-          </button> */}
         </div>
       )}
     </div>

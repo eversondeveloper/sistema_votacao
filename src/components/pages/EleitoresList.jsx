@@ -21,7 +21,6 @@ const EleitoresList = (props) => {
   useEffect(() => {
     const fetchEleicao = async () => {
       try {
-        // Alterado para apontar para a API local na porta 3001
         const response = await axios.get("http://localhost:3001/eleicao");
         const eleicao = response.data[0]; 
         setDadosEleicao(eleicao);
@@ -32,7 +31,6 @@ const EleitoresList = (props) => {
 
     const fetchEleitores = async () => {
       try {
-        // Alterado para apontar para a API local na porta 3001
         const responseEleitores = await axios.get(
           "http://localhost:3001/eleitores"
         );
@@ -42,7 +40,6 @@ const EleitoresList = (props) => {
 
         const eleitoresComStatus = await Promise.all(
           eleitoresData.map(async (eleitor) => {
-            // Alterado para apontar para a API local na porta 3001
             const responseVoto = await axios.get(
               `http://localhost:3001/votos/cpf/${eleitor.cpf}`
             );
@@ -56,7 +53,7 @@ const EleitoresList = (props) => {
         setEleitores(eleitoresComStatus);
 
         const novasCores = eleitoresComStatus.map((eleitor) =>
-          eleitor.votou ? "blue" : "red"
+          eleitor.votou ? "#00ff87" : "#ff3b30"
         );
         setCoresTexto(novasCores);
       } catch (err) {
@@ -96,60 +93,82 @@ const EleitoresList = (props) => {
   );
 
   return (
-    <div className={styles.eleitoresList}>
-      <div className={styles.eleicaoInfo}>
-        {dadosEleicao ? (
-          <>
-            <h2 className={styles.cargoEleicao}>Cargo: {dadosEleicao.cargo}</h2>
-            <h3 className={styles.anoEleicao}>Ano: {dadosEleicao.ano}</h3>
-            <h4 className={styles.candidato1}>
-              Candidato 1: {dadosEleicao.nomecand1}
-            </h4>
-            <h4 className={styles.candidato2}>
-              Candidato 2: {dadosEleicao.nomecand2}
-            </h4>
-          </>
-        ) : (
-          <p className={styles.semEleicao}>Não hay eleições cadastradas</p>
-        )}
+    <div className={styles.eleitoresListGeral}>
+      <div className={styles.containertabela}>
+        
+        {/* Painel de Informações Operacionais da Eleição */}
+        <div className={styles.eleicaoInfo}>
+          {dadosEleicao ? (
+            <div className={styles.infoGrid}>
+              <div className={styles.infoItem}>
+                <span className={styles.infoLabel}>CARGO:</span>
+                <span className={styles.infoValue}>{dadosEleicao.cargo}</span>
+              </div>
+              <div className={styles.infoItem}>
+                <span className={styles.infoLabel}>ANO:</span>
+                <span className={styles.infoValue}>{dadosEleicao.ano}</span>
+              </div>
+              <div className={styles.infoItem}>
+                <span className={styles.infoLabel}>CANDIDATO 1:</span>
+                <span className={styles.infoValue}>{dadosEleicao.nomecand1}</span>
+              </div>
+              <div className={styles.infoItem}>
+                <span className={styles.infoLabel}>CANDIDATO 2:</span>
+                <span className={styles.infoValue}>{dadosEleicao.nomecand2}</span>
+              </div>
+            </div>
+          ) : (
+            <p className={styles.semEleicao}>Aguardando carga de dados da eleição...</p>
+          )}
+        </div>
+
+        <h1 className={styles.title}>Lista de Eleitores</h1>
+        {erro && <p className={styles.error}>{erro}</p>}
+
+        {/* Campo de Filtro de Dados */}
+        <div className={styles.filterContainer}>
+          <input
+            type="text"
+            placeholder="Pesquisar por nome ou CPF..."
+            value={filtro}
+            onChange={handleFiltroChange}
+            className={styles.filterInput}
+          />
+        </div>
+
+        {/* Tabela de Monitoramento */}
+        <div className={styles.tableResponsive}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th className={styles.tableHeader}>Ordem</th>
+                <th className={styles.tableHeader}>Nome</th>
+                <th className={styles.tableHeader}>CPF</th>
+                <th className={styles.tableHeader}>Status Operacional</th>
+              </tr>
+            </thead>
+            <tbody>
+              {eleitoresFiltrados.map((eleitor, index) => (
+                <tr key={eleitor.cpf} className={styles.tableRow}>
+                  <td className={styles.tableCell}>{String(index + 1).padStart(3, "0")}</td>
+                  <td className={`${styles.tableCell} ${styles.tableName}`}>{eleitor.nome}</td>
+                  <td className={styles.tableCell}>{eleitor.cpf}</td>
+                  <td
+                    className={styles.tableCell}
+                    ref={(el) => (refs.current[index] = el)}
+                    style={{ color: coresTexto[index], fontWeight: "bold" }}
+                  >
+                    <span className={eleitor.votou ? styles.badgeSuccess : styles.badgeDanger}>
+                      {eleitor.votou ? "CONCLUÍDO" : "PENDENTE"}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
       </div>
-      <h1 className={styles.title}>Lista de Eleitores</h1>
-      {erro && <p className={styles.error}>{erro}</p>}
-      <div className={styles.filterContainer}>
-        <input
-          type="text"
-          placeholder="Filtrar por nome ou CPF"
-          value={filtro}
-          onChange={handleFiltroChange}
-          className={styles.filterInput}
-        />
-      </div>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <th className={styles.tableHeader}>Ordem</th>
-            <th className={styles.tableHeader}>Nome</th>
-            <th className={styles.tableHeader}>CPF</th>
-            <th className={styles.tableHeader}>Voto</th>
-          </tr>
-        </thead>
-        <tbody>
-          {eleitoresFiltrados.map((eleitor, index) => (
-            <tr key={eleitor.cpf} className={styles.tableRow}>
-              <td className={styles.tableCell}>{index + 1}</td>
-              <td className={styles.tableCell}>{eleitor.nome}</td>
-              <td className={styles.tableCell}>{eleitor.cpf}</td>
-              <td
-                className={styles.tableCell}
-                ref={(el) => (refs.current[index] = el)}
-                style={{ color: coresTexto[index], fontWeight: "bold" }}
-              >
-                {eleitor.votou ? "Registrado!" : "Não Registrado!"}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
     </div>
   );
 };

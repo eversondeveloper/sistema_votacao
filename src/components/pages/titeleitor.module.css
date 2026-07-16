@@ -1,124 +1,221 @@
-
+/* ==========================================
+   CONTAINER PRINCIPAL (TELA COMPLETA)
+   ========================================== */
 .titeleitorgeral {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #f5f5f5;
-  background: url(/fundogeral.png);
+  background-color: rgba(6, 10, 18, 0.95); /* Azul tático profundo */
+  backdrop-filter: blur(12px);
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
 }
 
+/* Painel Centralizado do Formulário */
 .containereleitor {
-  max-width: 600px;
-  width: 100%;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  max-width: 500px;
+  width: 90%;
+  padding: 30px;
+  border-radius: 12px;
+  background: rgba(13, 20, 35, 0.45);
+  border: 1px solid rgba(0, 242, 254, 0.15);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+  box-sizing: border-box;
+}
+
+/* Cabeçalho do Terminal de Cadastro */
+.headerTerminal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  background-color: #00ff87; /* Ponto verde indicando sistema ativo */
+  border-radius: 50%;
+  box-shadow: 0 0 8px #00ff87;
 }
 
 .title {
-  text-align: center;
-  color: #333;
-  margin-bottom: 20px;
-  font-family: "Arial", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #ffffff;
+  margin: 0;
+  text-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
 }
 
+/* ==========================================
+   FORMULÁRIO E INPUTS
+   ========================================== */
 .form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-}
-
-.inputGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.label {
-  font-size: 1rem;
-  color: #555;
-  font-family: "Arial", sans-serif;
-}
-
-.input {
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  transition: border-color 0.3s;
-}
-
-.input:focus {
-  border-color: #007bff;
-  outline: none;
-}
-
-.button {
-  padding: 10px 15px;
-  font-size: 1rem;
-  color: #fff;
-  background-color: #007bff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.button:hover {
-  background-color: #0056b3;
-}
-
-.message {
-  text-align: center;
-  font-size: 1rem;
-  color: #d9534f;
-  font-family: "Arial", sans-serif;
-  margin-top: 10px;
-}
-
-@media (max-width: 768px) {
-  .containereleitor {
-    padding: 15px;
-  }
-
-  .title {
-    font-size: 1.5rem;
-  }
-
-  .button {
-    font-size: 0.9rem;
-  }
+  gap: 20px;
 }
 
 .inputGroup {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px;
 }
 
+.label {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 11px;
+  font-weight: 800;
+  color: rgba(0, 242, 254, 0.7);
+  letter-spacing: 1px;
+}
+
+.input {
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #ffffff;
+  background: rgba(10, 15, 30, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  outline: none;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  border-color: #00f2fe;
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.25);
+  background: rgba(13, 20, 35, 0.85);
+}
+
+.input::placeholder {
+  color: rgba(226, 232, 240, 0.3);
+}
+
+/* ==========================================
+   LISTA DE SUGESTÕES DE EMAIL (DROPDOWN)
+   ========================================== */
 .suggestions {
-  border: 1px solid #ccc;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
   max-height: 150px;
   overflow-y: auto;
-  padding-left: 0;
-  margin-top: 12%;
-  position: absolute;
-  background-color: #fff;
-  z-index: 1000;
-  width: 100%;
-  border-radius: 4px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  margin: 5px 0 0 0;
+  background: rgba(10, 15, 30, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 242, 254, 0.2);
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
   list-style-type: none;
+  z-index: 1000;
 }
 
 .suggestionItem {
-  padding: 10px;
+  padding: 10px 16px;
+  font-size: 13px;
+  color: rgba(226, 232, 240, 0.8);
   cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .suggestionItem:hover {
-  background-color: #f0f0f0;
+  background-color: rgba(0, 242, 254, 0.08);
+  color: #00f2fe;
+}
+
+/* Scrollbar personalizada das sugestões */
+.suggestions::-webkit-scrollbar {
+  width: 5px;
+}
+
+.suggestions::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.suggestions::-webkit-scrollbar-thumb {
+  background: rgba(0, 242, 254, 0.2);
+  border-radius: 3px;
+}
+
+/* ==========================================
+   BOTÃO DE CADASTRO
+   ========================================== */
+.button {
+  padding: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #00ff87;
+  background: rgba(0, 255, 135, 0.06);
+  border: 1px solid rgba(0, 255, 135, 0.3);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.button:hover {
+  background: rgba(0, 255, 135, 0.12);
+  border-color: rgba(0, 255, 135, 0.6);
+  box-shadow: 0 0 15px rgba(0, 255, 135, 0.2);
+}
+
+/* ==========================================
+   NOTIFICAÇÕES DO OPERADOR
+   ========================================== */
+.messageContainer {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 12px;
+  font-weight: 800;
+  text-align: center;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 20px;
+  letter-spacing: 0.5px;
+  animation: pulseMessage 2s infinite alternate;
+}
+
+.success {
+  background: rgba(0, 255, 135, 0.06);
+  border: 1px solid rgba(0, 255, 135, 0.2);
+  color: #00ff87;
+  text-shadow: 0 0 8px rgba(0, 255, 135, 0.2);
+}
+
+.error {
+  background: rgba(255, 59, 48, 0.06);
+  border: 1px solid rgba(255, 59, 48, 0.2);
+  color: #ff3b30;
+  text-shadow: 0 0 8px rgba(255, 59, 48, 0.2);
+}
+
+@keyframes pulseMessage {
+  from { opacity: 0.8; }
+  to { opacity: 1; }
+}
+
+/* ==========================================
+   RESPONSIVIDADE
+   ========================================== */
+@media (max-width: 768px) {
+  .containereleitor {
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 1.3rem;
+  }
 }

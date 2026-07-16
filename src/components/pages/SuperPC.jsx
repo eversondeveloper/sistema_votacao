@@ -12,21 +12,28 @@ function SuperPC(props) {
   const [estiCard1, setEstiCard1] = useState(false);
   const [estiCard2, setEstiCard2] = useState(false);
 
-  const [eleicoes, setEleicoes] = useState([]);
   const [cargoEleic, setCargoEleic] = useState("");
   const [anaEleic, setAnoEleic] = useState("");
   const [noCand1, setNoCand1] = useState("");
   const [nuCand1, setNucand1] = useState("");
   const [noCand2, setNoCand2] = useState("");
   const [nuCand2, setNucand2] = useState("");
-  const [mensagem, setMensagem] = useState(""); // Adicionado para evitar erro de variável não definida
+  const [mensagem, setMensagem] = useState("");
 
+  // Busca dados da eleição ativa
   useEffect(() => {
     const fetchEleicoes = async () => {
       try {
-        // Alterado para apontar para a API local na porta 3001
         const response = await axios.get("http://localhost:3001/eleicao");
-        setEleicoes(response.data);
+        if (response.data && response.data.length > 0) {
+          const eleicaoAtiva = response.data[0]; // Pega a primeira eleição cadastrada
+          setCargoEleic(eleicaoAtiva.cargo);
+          setAnoEleic(eleicaoAtiva.ano);
+          setNoCand1(eleicaoAtiva.nomecand1);
+          setNucand1(eleicaoAtiva.numcand1);
+          setNoCand2(eleicaoAtiva.nomecand2);
+          setNucand2(eleicaoAtiva.numcand2);
+        }
       } catch (error) {
         console.error("Erro ao buscar eleições:", error);
         setMensagem("Erro ao buscar eleições.");
@@ -36,17 +43,6 @@ function SuperPC(props) {
     fetchEleicoes();
   }, []);
 
-  useEffect(() => {
-    eleicoes.map((eleicao) => {
-      setCargoEleic(eleicao.cargo);
-      setAnoEleic(eleicao.ano);
-      setNoCand1(eleicao.nomecand1);
-      setNucand1(eleicao.numcand1);
-      setNoCand2(eleicao.nomecand2);
-      setNucand2(eleicao.numcand2);
-    });
-  });
-
   const totalEleitores = props.v5;
   const totalVotos = props.v1 + props.v2 + props.v3 + props.v4;
 
@@ -55,7 +51,7 @@ function SuperPC(props) {
     let porcentagem = (diferenca / totalEleitores).toFixed(2) * 100;
 
     if (isNaN(porcentagem)) {
-      return 0;
+      return "0%";
     } else {
       return porcentagem + "%";
     }
@@ -67,32 +63,31 @@ function SuperPC(props) {
     props.setPaginas(true);
   }, []);
 
+  // Define dinamicamente o card de liderança temporária (vencedor parcial)
   useEffect(() => {
-    if (porcentCand1SP > porcentCand2SP) {
+    if (Number(porcentCand1SP) > Number(porcentCand2SP)) {
       setEstiCard1(true);
-    } else {
+      setEstiCard2(false);
+    } else if (Number(porcentCand2SP) > Number(porcentCand1SP)) {
       setEstiCard1(false);
-    }
-
-    if (porcentCand2SP > porcentCand1SP) {
       setEstiCard2(true);
     } else {
+      setEstiCard1(false);
       setEstiCard2(false);
     }
   }, [porcentCand1SP, porcentCand2SP]);
 
+  // Atualização automática a cada segundo em segundos específicos
   useEffect(() => {
     const intervalo = setInterval(() => {
       const segundos = new Date();
-      if (segundos.getSeconds() == 30 && props.superPCAt == true) {
+      if (segundos.getSeconds() === 30 && props.superPCAt === true) {
         window.location.reload();
       }
     }, 1000);
 
-    return () => {
-      clearInterval(intervalo); // Corrigido o retorno do intervalo para limpar corretamente
-    };
-  });
+    return () => clearInterval(intervalo);
+  }, [props.superPCAt]);
 
   useEffect(() => {
     if (props.superPCAt) {
@@ -100,17 +95,15 @@ function SuperPC(props) {
     }
   }, []);
 
+  // Calcula as porcentagens dos candidatos em cima dos votos válidos
   useEffect(() => {
-    if (props.v1 != 0 || props.v2 != 0) {
-      setPorcentCand1SP(
-        (Number(props.v1 / (props.v1 + props.v2)) * 100).toFixed(2)
-      );
-    }
-
-    if (props.v1 != 0 || props.v2 != 0) {
-      setPorcentCand2SP(
-        (Number(props.v2 / (props.v1 + props.v2)) * 100).toFixed(2)
-      );
+    const totalValidos = props.v1 + props.v2;
+    if (totalValidos > 0) {
+      setPorcentCand1SP(((props.v1 / totalValidos) * 100).toFixed(2));
+      setPorcentCand2SP(((props.v2 / totalValidos) * 100).toFixed(2));
+    } else {
+      setPorcentCand1SP(0);
+      setPorcentCand2SP(0);
     }
   }, [props.v1, props.v2]);
 
@@ -122,6 +115,7 @@ function SuperPC(props) {
           props.setSuperPC(false);
         }}
       >
+        {/* Topo Holográfico */}
         <div className={styles.topogeral}>
           <div className={styles.logodindin}>
             <div className={styles.logo}>
@@ -133,6 +127,8 @@ function SuperPC(props) {
             </div>
           </div>
         </div>
+
+        {/* Centro de Estatísticas de Votos */}
         <div className={styles.result}>
           <div className={styles.estatisticas}>
             <div className={styles.resultado}>
@@ -156,21 +152,22 @@ function SuperPC(props) {
                     {nuCand2} - {noCand2}
                   </p>
                   {props.v2}
-                  {eleicoes.nomecand1}
                 </div>
               </div>
             </div>
           </div>
 
+          {/* Painel de Avatares e Abstenções */}
           <div className={styles.porcentagemtopo}>
+            {/* Card Candidato 1 */}
             <div
               className={!estiCard1 ? styles.porcent1 : styles.candidatovenc}
-              title="Porcentagem do candidato 1."
+              title={`Porcentagem de ${noCand1}`}
             >
               <div className={styles.porc1}>
                 <img
-                  src={"./cand1.jpg"}
-                  alt="Candidato Pedro"
+                  src="./cand1.jpg"
+                  alt={noCand1}
                   className={styles.imgpol}
                 />
                 <div className={styles.barrastatus}>
@@ -178,6 +175,8 @@ function SuperPC(props) {
                 </div>
               </div>
             </div>
+
+            {/* Painel Geral de Apuração */}
             <div className={styles.totalvotosvalidos}>
               <div className={styles.totalvv1}>
                 <div className={styles.totalvv2}>Total de votos</div>
@@ -187,22 +186,19 @@ function SuperPC(props) {
               </div>
               <div className={styles.totalvv1}>
                 <div className={styles.totalvv2}>Votos válidos</div>
-                <div
-                  className={styles.totalvotos}
-                  title="Total de votos válidos."
-                >
+                <div className={styles.totalvotos} title="Votos válidos">
                   {props.v1 + props.v2}
                 </div>
               </div>
               <div className={styles.totalvv1}>
                 <div className={styles.totalvv2}>Votos brancos</div>
-                <div className={styles.totalvotos} title="Votos Brancos.">
+                <div className={styles.totalvotos} title="Votos brancos">
                   {props.v3}
                 </div>
               </div>
               <div className={styles.totalvv1}>
                 <div className={styles.totalvv2}>Votos nulos</div>
-                <div className={styles.totalvotos} title="Votos Nulos.">
+                <div className={styles.totalvotos} title="Votos nulos">
                   {props.v4}
                 </div>
               </div>
@@ -214,13 +210,14 @@ function SuperPC(props) {
               </div>
             </div>
 
+            {/* Card Candidato 2 */}
             <div
               className={!estiCard2 ? styles.porcent1 : styles.candidatovenc}
-              title="Porcentagem do candidato 1."
+              title={`Porcentagem de ${noCand2}`}
             >
               <div className={styles.porc1}>
                 <img
-                  src={"./cand2.jpg"}
+                  src="./cand2.jpg"
                   alt={noCand2}
                   className={styles.imgpol}
                 />
@@ -231,6 +228,8 @@ function SuperPC(props) {
             </div>
           </div>
         </div>
+
+        {/* Rodapé Tático */}
         <div className={styles.rodape}>
           <p>Desenvolvido por everScript</p>
         </div>

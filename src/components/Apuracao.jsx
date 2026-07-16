@@ -8,8 +8,9 @@ export default function Apuracao(props) {
 
   const fetchCount = async () => {
     try {
+      // Alterado para apontar para a API local na porta 3001
       const response = await axios.get(
-        `https://apinode-git-main-everson-silvas-projects-3c80baa3.vercel.app/votos/count/${props.numero}`
+        `http://localhost:3001/votos/count/${props.numero}`
       );
       setCount(response.data.count);
       if (props.valorRet) {
@@ -22,7 +23,7 @@ export default function Apuracao(props) {
 
   useEffect(() => {
     fetchCount();
-  });
+  }, [props.numero]); // Adicionada a dependência para rodar de forma segura e eficiente
 
   return <p>{Number(count)}</p>;
 }
